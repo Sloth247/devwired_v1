@@ -1,0 +1,11 @@
+{
+  "name": "devwired_v1",
+  "version": "1.0.0",
+  "description": "job listing website using MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yuko Horita",
+  "license": "MIT"
+}
