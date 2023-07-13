@@ -1,0 +1,113 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.post {
+  background-color: #fff;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+  position: relative;
+  margin-bottom: 2.5rem;
+
+  // when having FEATURED
+  &.featured::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: variables.$color-dark-cyan;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+
+  &__img-container {
+    width: 3rem;
+    height: 3rem;
+    transform: translateY(-50%);
+
+    & img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  &__upper-container {
+    margin-top: -0.5rem;
+  }
+  &__lower-container {
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  &__company {
+    font-weight: variables.$font-bold;
+    font-size: 0.8125rem;
+    color: variables.$color-dark-cyan;
+    line-height: 12px;
+    margin-right: 1.75rem;
+
+    &-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+  }
+  &__label {
+    font-weight: variables.$font-bold;
+    font-size: 0.8125rem;
+    line-height: 0.8125rem;
+    color: variables.$color-bg;
+    padding: 0.45rem 0.6rem 0.25rem 0.6rem;
+    border-radius: 3rem;
+    text-transform: uppercase;
+    &.new {
+      background-color: variables.$color-dark-cyan;
+    }
+    &.featured {
+      background-color: variables.$color-very-dark-cyan;
+      margin-left: 0.5rem;
+    }
+  }
+  &__job-title {
+    font-weight: variables.$font-bold;
+    color: variables.$color-very-dark-cyan;
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  &__data {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: variables.$color-grey-cyan;
+    line-height: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #b7c4c4;
+  }
+  &__dot {
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+    width: 0.25rem;
+    height: 0.25rem;
+    background-color: variables.$color-grey-cyan;
+    border-radius: 50%;
+  }
+  &__category {
+    background-color: variables.$color-bg;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    min-height: 2rem;
+    color: variables.$color-dark-cyan;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: variables.$font-bold;
+    border-radius: 4px;
+  }
+}
