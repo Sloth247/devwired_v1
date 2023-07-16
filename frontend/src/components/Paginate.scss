@@ -1,0 +1,24 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  &-btn {
+    color: variables.$color-dark-cyan;
+    background-color: #fff;
+    margin-right: 1rem;
+    font-size: 1rem;
+    font-weight: variables.$font-bold;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    &.active {
+      color: #fff;
+      background-color: variables.$color-dark-cyan;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.myjobs {
+  font-size: 1rem;
+  color: variables.$color-very-dark-cyan;
+  &__title {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  &__item {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+  &__inner-container {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  &__img-container {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+    & img {
+      width: 100%;
+    }
+  }
+  &__status {
+    color: rgb(226, 42, 42);
+  }
+  &__position {
+    font-weight: variables.$font-bold;
+    line-height: 1.5rem;
+    position: relative;
+    transition: ease 0.2s;
+    &:hover {
+      color: variables.$color-dark-cyan;
+    }
+  }
+  &__date {
+    color: variables.$color-grey-cyan;
+    font-size: 0.9375rem;
+  }
+  &__details {
+    background-color: variables.$color-dark-cyan;
+    color: variables.$color-bg;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 0.25rem 1rem;
+  }
+}

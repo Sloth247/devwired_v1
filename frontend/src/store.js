@@ -7,23 +7,23 @@ import {
   jobCreateReducer,
   jobUpdateReducer,
 } from './reducers/jobReducers';
-// import {
-//   userLoginReducer,
-//   userRegisterReducer,
-//   userDetailsReducer,
-//   userUpdateProfileReducer,
-//   userListReducer,
-//   userDeleteReducer,
-//   userUpdateReducer,
-// } from './reducers/userReducers';
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+  userListReducer,
+  userDeleteReducer,
+  userUpdateReducer,
+} from './reducers/userReducers';
 
-// import {
-//   applicationCreateReducer,
-//   applicationDetailsReducer,
-//   applicationListMyReducer,
-//   applicationListReducer,
-//   applicationStatusUpdateReducer,
-// } from './reducers/applicationReducers';
+import {
+  applicationCreateReducer,
+  applicationDetailsReducer,
+  applicationListMyReducer,
+  applicationListReducer,
+  applicationStatusUpdateReducer,
+} from './reducers/applicationReducers';
 
 const reducers = {
   jobList: jobListReducer,
@@ -31,18 +31,18 @@ const reducers = {
   jobDelete: jobDeleteReducer,
   jobCreate: jobCreateReducer,
   jobUpdate: jobUpdateReducer,
-  //   userLogin: userLoginReducer,
-  //   userRegister: userRegisterReducer,
-  //   userDetails: userDetailsReducer,
-  //   userUpdateProfile: userUpdateProfileReducer,
-  //   userList: userListReducer,
-  //   userDelete: userDeleteReducer,
-  //   userUpdate: userUpdateReducer,
-  //   applicationCreate: applicationCreateReducer,
-  //   applicationListMy: applicationListMyReducer,
-  //   applicationDetails: applicationDetailsReducer,
-  //   applicationList: applicationListReducer,
-  //   applicationStatusUpdate: applicationStatusUpdateReducer,
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
+  userList: userListReducer,
+  userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
+  applicationCreate: applicationCreateReducer,
+  applicationListMy: applicationListMyReducer,
+  applicationDetails: applicationDetailsReducer,
+  applicationList: applicationListReducer,
+  applicationStatusUpdate: applicationStatusUpdateReducer,
 };
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

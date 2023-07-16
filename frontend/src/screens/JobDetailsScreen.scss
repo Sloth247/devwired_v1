@@ -1,0 +1,96 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.job {
+  &__back {
+    color: variables.$color-very-dark-cyan;
+    font-weight: variables.$font-bold;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__header {
+    font-size: 1rem;
+    color: variables.$color-very-dark-cyan;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+
+    &-flex {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    &-other {
+      color: variables.$color-grey-cyan;
+      font-size: 1rem;
+      font-weight: inherit;
+      line-height: 1.5rem;
+    }
+  }
+
+  &__logo-container {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+    & img {
+      width: 100%;
+    }
+  }
+  &__position {
+    font-size: 1rem;
+  }
+  &__company {
+    font-size: 1rem;
+    font-weight: inherit;
+  }
+  &__skills {
+    margin-top: 1rem;
+    &-title {
+      color: variables.$color-very-dark-cyan;
+      margin-bottom: 0.5rem;
+    }
+    &-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    &-item {
+      background-color: variables.$color-bg;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      color: variables.$color-dark-cyan;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: variables.$font-bold;
+    }
+  }
+  &__item {
+    margin-bottom: 1rem;
+    line-height: 1.3rem;
+  }
+  &__description {
+    font-size: 1rem;
+    color: variables.$color-very-dark-cyan;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    position: relative;
+    margin-top: 1rem;
+    &-title {
+      margin-bottom: 0.5rem;
+    }
+    &-sub-title {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,168 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.application-details {
+  &__overview {
+    font-size: 1rem;
+    color: variables.$color-very-dark-cyan;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  &__position {
+    font-weight: variables.$font-bold;
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+  &__date {
+    color: variables.$color-grey-cyan;
+    font-size: 0.9375rem;
+  }
+  &__container {
+    font-weight: inherit;
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    border: 0.5px solid hsla(180, 8%, 52%, 0.233);
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  &__details {
+    font-size: 1rem;
+    color: variables.$color-very-dark-cyan;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    &-heading {
+      font-size: 1rem;
+      font-weight: variables.$font-bold;
+      color: variables.$color-grey-cyan;
+      margin-bottom: 0.5rem;
+    }
+  }
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__contact {
+    &-container {
+      padding: 0.8rem;
+    }
+
+    &-item {
+      position: relative;
+      &:not(:last-child) {
+        border-bottom: 0.25px solid hsla(180, 8%, 52%, 0.233);
+      }
+    }
+
+    &-title {
+      font-size: 1rem;
+      font-weight: inherit;
+      color: variables.$color-grey-cyan;
+    }
+  }
+
+  &__resume {
+    border: 0.5px solid hsla(180, 8%, 52%, 0.233);
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+  }
+  &__coverletter {
+    border: 0.5px solid hsla(180, 8%, 52%, 0.233);
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+  }
+
+  &__select {
+    display: grid;
+    position: relative;
+    grid-template-areas: 'select';
+    align-items: center;
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid hsla(180, 8%, 52%, 0.233);
+    border-radius: 0.25em;
+    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    padding: 0.8rem 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+    &::after {
+      grid-area: select;
+      justify-self: end;
+      content: '';
+      width: 0.8em;
+      height: 0.5em;
+      background-color: variables.$color-very-dark-cyan;
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    }
+  }
+
+  &__status {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      & select {
+        // A reset of styles, including removing the default dropdown arrow
+        appearance: none;
+        // Additional resets for further consistency
+        background-color: transparent;
+        border: none;
+        padding: 0rem 1em 0rem 0;
+        margin: 0;
+        width: 100%;
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: inherit;
+        line-height: inherit;
+        outline: none;
+        grid-area: select;
+        &::-ms-expand {
+          display: none;
+        }
+        &:focus + .focus {
+          position: absolute;
+          top: -1px;
+          left: -1px;
+          right: -1px;
+          bottom: -1px;
+          border: 2px solid blue;
+          border-radius: inherit;
+        }
+      }
+    }
+    & label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    &-btn {
+      color: #fff;
+      background-color: variables.$color-dark-cyan;
+      margin-right: 1rem;
+      font-size: 1rem;
+      font-weight: variables.$font-bold;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      &:hover {
+        background-color: variables.$color-very-dark-cyan;
+      }
+    }
+  }
+}
