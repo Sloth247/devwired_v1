@@ -1,0 +1,10 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.loader {
+  width: 3.125rem;
+  height: 3.125rem;
+  display: block;
+  margin-top: 1rem;
+  color: variables.$color-very-dark-cyan;
+}

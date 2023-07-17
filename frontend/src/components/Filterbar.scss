@@ -29,6 +29,9 @@
   }
 }
 .remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: variables.$color-dark-cyan;
   padding: 0.5625rem;
   max-height: 2rem;

@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import Message from '../components/Message';
-// import Loader from '../components/Loader';
+import Loader from '../components/Loader';
 import { listJobDetails } from '../actions/jobActions';
+import { listMyApplications } from '../actions/applicationActions';
 
 import './JobDetailsScreen.scss';
+import Message from '../components/Message';
 
 const JobDetailsScreen = () => {
   const { id } = useParams();
@@ -18,14 +20,25 @@ const JobDetailsScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const applicationListMy = useSelector((state) => state.applicationListMy);
+  const { applications } = applicationListMy;
+
   useEffect(() => {
+    if (userInfo) {
+      dispatch(listMyApplications());
+    }
     dispatch(listJobDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, userInfo]);
+
+  const hasApplied =
+    applications &&
+    applications.some((application) => application.jobListing.id === id);
 
   const handleClick = () => {
     if (!userInfo) {
       navigate('/login');
-    } else {
+    }
+    if (!hasApplied) {
       navigate(`/apply/${id}`);
     }
   };
@@ -36,16 +49,21 @@ const JobDetailsScreen = () => {
 
   return (
     <>
-      <Link className="job__back" to="/">
+      <Link to="/" className="job__back">
         Go back
       </Link>
       {loading ? (
-        <p>loading...</p>
+        <Loader />
       ) : error ? (
         <p>{error}</p>
       ) : (
         <div className="job-container">
           <div className="job__header">
+            {hasApplied && (
+              <Message variant="danger">
+                You have already applied for this job!
+              </Message>
+            )}
             <div className="job__header-flex">
               <div className="job__logo-container">
                 <img src={job.logo} alt={job.company} />
@@ -63,11 +81,15 @@ const JobDetailsScreen = () => {
               <div className="job__skills">
                 <h4 className="job__skills-title">Skills</h4>
                 <p className="job__skills-flex">
-                  {job.languages.map((language) => (
-                    <span className="job__skills-item">{language}</span>
+                  {job.languages.map((language, index) => (
+                    <span className="job__skills-item" key={index}>
+                      {language}
+                    </span>
                   ))}
-                  {job.tools.map((tool) => (
-                    <span className="job__skills-item">{tool}</span>
+                  {job.tools.map((tool, index) => (
+                    <span className="job__skills-item" key={index}>
+                      {tool}
+                    </span>
                   ))}
                 </p>
               </div>
@@ -82,16 +104,16 @@ const JobDetailsScreen = () => {
             </article>
             <article className="job__item">
               <h4 className="job__description-sub-title">Responsibilities</h4>
-              {job.responsibilities.map((responsibility) => (
-                <p>
+              {job.responsibilities.map((responsibility, index) => (
+                <p key={index}>
                   <span>&#x2022;</span> {responsibility}
                 </p>
               ))}
             </article>
             <article className="job__item">
               <h4 className="job__description-sub-title">Qualifications</h4>
-              {job.qualifications.map((qualification) => (
-                <p>
+              {job.qualifications.map((qualification, index) => (
+                <p key={index}>
                   <span>&#x2022;</span> {qualification}
                 </p>
               ))}
@@ -119,8 +141,9 @@ const JobDetailsScreen = () => {
             type="submit"
             className="btn btn-signin"
             onClick={handleClick}
+            disabled={hasApplied}
           >
-            Apply Now
+            {hasApplied ? 'Already Applied' : 'Apply Now'}
           </button>
         </div>
       )}

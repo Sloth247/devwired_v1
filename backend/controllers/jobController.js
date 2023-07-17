@@ -1,6 +1,6 @@
 import ErrorResponse from '../utils/errorResponse.js';
 import asyncHandler from '../middleware/async.js';
-import Job from '../models/Job.js';
+import Job from '../models/jobModel.js';
 
 // @desc Get all jobs
 // @routes GET /api/jobs

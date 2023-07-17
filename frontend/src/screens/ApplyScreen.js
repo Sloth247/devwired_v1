@@ -8,6 +8,7 @@ import { createApplication } from '../actions/applicationActions';
 import './LoginScreen.scss';
 import { listJobDetails } from '../actions/jobActions';
 import { APPLICATION_CREATE_RESET } from '../constants/applicationConstants';
+import Loader from '../components/Loader';
 
 export default function ApplyScreen() {
   const [resume, setResume] = useState('');
@@ -112,6 +113,7 @@ export default function ApplyScreen() {
   return (
     <div className="login-container">
       <h1 className="login__title">Application</h1>
+
       {message && <p>{message}</p>}
       {error && <p>{error}</p>}
       <form
@@ -143,7 +145,7 @@ export default function ApplyScreen() {
       </form>
 
       <div className="job-container">
-        {loadingDetails && <p>loading...</p>}
+        {loadingDetails && <Loader />}
         {errorDetails && <p>{errorDetails}</p>}
         <div className="job__header">
           <h2 className="job__position">{job.position}</h2>
@@ -158,16 +160,16 @@ export default function ApplyScreen() {
           </article>
           <article className="job__item">
             <h4>Responsibilities</h4>
-            {job.responsibilities.map((responsibility) => (
-              <p>
+            {job.responsibilities.map((responsibility, index) => (
+              <p key={index}>
                 <span>&#x2022;</span> {responsibility}
               </p>
             ))}
           </article>
           <article className="job__item">
             <h4>Qualifications</h4>
-            {job.qualifications.map((qualification) => (
-              <p>
+            {job.qualifications.map((qualification, index) => (
+              <p key={index}>
                 <span>&#x2022;</span> {qualification}
               </p>
             ))}

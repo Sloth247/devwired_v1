@@ -5,6 +5,7 @@ import { BiShow, BiHide } from 'react-icons/bi';
 import { register } from '../actions/userActions';
 
 import './LoginScreen.scss';
+import Loader from '../components/Loader';
 
 export default function RegisterScreen() {
   const [name, setName] = useState('');
@@ -46,6 +47,7 @@ export default function RegisterScreen() {
   return (
     <div className="login-container">
       <h1 className="login__title">Sign Up</h1>
+      {loading && <Loader />}
       {message && <p>{message}</p>}
       {error && <p>{error}</p>}
       <form

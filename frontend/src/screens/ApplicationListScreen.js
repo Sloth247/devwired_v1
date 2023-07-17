@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { listApplications } from '../actions/applicationActions';
 
+import Table from 'react-bootstrap/Table';
+import Loader from '../components/Loader';
+
 const ApplicationListScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,13 +28,13 @@ const ApplicationListScreen = () => {
 
   return (
     <>
-      <h1>Applications</h1>
+      <h1 className="list-title">Applications</h1>
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <table className="table-sm">
+        <Table responsive="sm" border={+true} striped>
           <thead>
             <tr>
               <th>ID</th>
@@ -65,7 +68,7 @@ const ApplicationListScreen = () => {
                 </tr>
               ))}
           </tbody>
-        </table>
+        </Table>
       )}
     </>
   );

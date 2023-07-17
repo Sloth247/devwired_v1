@@ -7,6 +7,7 @@ import { listJobs } from '../actions/jobActions';
 import { calculateDate } from '../utils/CalculateDate';
 
 import './HomeScreen.scss';
+import Loader from '../components/Loader';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -62,7 +63,9 @@ const HomeScreen = () => {
           deleteAllQueries={deleteAllQueries}
         />
       )}
-      {error ? (
+      {loading ? (
+        <Loader />
+      ) : error ? (
         <p>{error}</p>
       ) : (
         <ul>

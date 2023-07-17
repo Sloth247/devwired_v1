@@ -1,17 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Link, useLocation } from 'react-router-dom';
+import { logout } from '../actions/userActions';
+import { getUserDetails } from '../actions/userActions';
+
 import { HiUserCircle } from 'react-icons/hi';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
-import { logout } from '../actions/userActions';
+
 import './Header.scss';
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 export default function Header() {
   const [isShown, setIsShown] = useState(false);
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const userDetails = useSelector((state) => state.userDetails);
+  const { loading, error, user } = userDetails;
+
   const location = useLocation();
   const dropdownRef = useRef(null);
 
@@ -27,13 +33,19 @@ export default function Header() {
   };
 
   useEffect(() => {
+    if (userInfo && (!user || !user.name)) {
+      dispatch({ type: USER_UPDATE_PROFILE_RESET });
+      dispatch(getUserDetails('profile'));
+    }
     setIsShown(false);
     document.addEventListener('click', handleClickOutside);
 
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, [location.pathname]);
+  }, [location.pathname, dispatch]);
+
+  const cloudinaryImageUrl = user && user.image ? user.image.slice(1) : '';
 
   return (
     <header className="header">
@@ -46,7 +58,7 @@ export default function Header() {
           <span className="header__login-text">login</span>
         </Link>
       )}
-      {userInfo && !userInfo.isAdmin && (
+      {userInfo && !userInfo.isAdmin && user && (
         <div className="dropdown-container" ref={dropdownRef}>
           <button
             className="header__user-name"
@@ -56,7 +68,20 @@ export default function Header() {
             aria-expanded={isShown ? true : false}
             aria-controls="dropdown"
           >
-            <HiUserCircle className="header__user-icon" />
+            {!user.image ? (
+              <HiUserCircle className="header__user-icon" alt={user.name} />
+            ) : (
+              <div className="header__img-container">
+                <img
+                  src={
+                    user.image.includes('cloudinary')
+                      ? cloudinaryImageUrl
+                      : user.image
+                  }
+                  alt={user.name}
+                />
+              </div>
+            )}
             {userInfo.name}
             {isShown ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
           </button>

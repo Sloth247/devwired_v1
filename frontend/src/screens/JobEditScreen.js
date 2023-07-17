@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { listJobDetails, updateJob } from '../actions/jobActions';
 import { JOB_UPDATE_RESET } from '../constants/jobConstants';
+import Loader from '../components/Loader';
 
 const JobEditScreen = () => {
   const [company, setCompany] = useState('');
@@ -143,10 +144,10 @@ const JobEditScreen = () => {
 
       <div>
         <h1>Edit Job Listing</h1>
-        {loadingUpdate && <p>Loading...</p>}
+        {loadingUpdate && <Loader />}
         {errorUpdate && <p>{errorUpdate}</p>}
         {loading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : error ? (
           <p>{error}</p>
         ) : (

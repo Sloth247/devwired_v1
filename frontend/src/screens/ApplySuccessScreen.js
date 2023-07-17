@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom';
 import { getUserDetails } from '../actions/userActions';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import './ApplySuccessScreen.scss';
+import Loader from '../components/Loader';
 
 export default function ApplySuccessScreen() {
   const [email, setEmail] = useState('');
@@ -35,7 +36,7 @@ export default function ApplySuccessScreen() {
       </div>
       <h1 className="success__title">Your application has been submitted!</h1>
       {loadingDetails ? (
-        <p>loading...</p>
+        <Loader />
       ) : errorDetails ? (
         <p>{errorDetails}</p>
       ) : (

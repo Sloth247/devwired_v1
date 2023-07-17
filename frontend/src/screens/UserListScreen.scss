@@ -1,0 +1,14 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.btn-edit {
+  &:hover > .edit-icon {
+    color: variables.$color-dark-cyan;
+  }
+}
+
+.btn-delete {
+  &:hover > .delete-icon {
+    color: red;
+  }
+}

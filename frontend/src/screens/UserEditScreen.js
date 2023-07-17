@@ -8,6 +8,7 @@ import { getUserDetails, updateUser } from '../actions/userActions';
 import { USER_UPDATE_RESET } from '../constants/userConstants';
 
 import './LoginScreen.scss';
+import Loader from '../components/Loader';
 
 export default function UserEditScreen() {
   const { id } = useParams();
@@ -105,9 +106,9 @@ export default function UserEditScreen() {
 
       <div className="login-container">
         <h1 className="login__title">Edit User</h1>
-        {errorUpdate && <p>{error}</p>}
+        {loadingUpdate ? <Loader /> : errorUpdate ? <p>{error}</p> : ''}
         {loading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : error ? (
           <p>{error}</p>
         ) : (

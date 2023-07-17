@@ -5,6 +5,7 @@ import { BiShow, BiHide } from 'react-icons/bi';
 import { login } from '../actions/userActions';
 
 import './LoginScreen.scss';
+import Loader from '../components/Loader';
 
 export default function HomeScreen() {
   const [email, setEmail] = useState('');
@@ -49,7 +50,7 @@ export default function HomeScreen() {
         "123456". To try out customer account, please login as email:
         "john@example.com" password: "123456".{' '}
       </p>
-
+      {loading && <Loader />}
       {error && <p>{error}</p>}
       <form
         action=""
@@ -80,9 +81,9 @@ export default function HomeScreen() {
             onClick={() => setIsShown((prevState) => !prevState)}
           >
             {isShown ? (
-              <BiHide aria-labelledby="hide password" />
-            ) : (
               <BiShow aria-labelledby="show password" />
+            ) : (
+              <BiHide aria-labelledby="hide password" />
             )}
           </button>
         </div>

@@ -3,7 +3,7 @@ import connectDB from './config/db.js';
 import jobs from './_data/jobs.js';
 import users from './_data/users.js';
 
-import Job from './models/Job.js';
+import Job from './models/jobModel.js';
 import User from './models/userModel.js';
 import Application from './models/applicationModel.js';
 

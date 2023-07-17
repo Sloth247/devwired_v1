@@ -1,0 +1,40 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.profile {
+  &__form {
+    &-container {
+      margin-top: 1rem;
+    }
+    &-items {
+      display: grid;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.btn-update {
+  color: variables.$color-bg;
+  background-color: variables.$color-dark-cyan;
+  margin-right: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  &:hover {
+    color: variables.$color-dark-cyan;
+    background-color: #fff;
+  }
+}
+
+input,
+textarea {
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-family: inherit;
+}
+label {
+  margin-bottom: 0.2rem;
+}

@@ -5,6 +5,7 @@ import { listMyApplications } from '../actions/applicationActions';
 import { calculateDate } from '../utils/CalculateDate';
 
 import './MyJobsScreen.scss';
+import Loader from '../components/Loader';
 
 export default function MyJobsScreen() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export default function MyJobsScreen() {
 
   return (
     <>
-      {loadingApplications && <p>Loading...</p>}
+      {loadingApplications && <Loader />}
       {errorApplications && <p>{errorApplications}</p>}
       <h1 className="myjobs__title">My Applications</h1>
       <ul className="myjobs__list">

@@ -6,7 +6,9 @@ import { BiShow, BiHide } from 'react-icons/bi';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
-import './LoginScreen.scss';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+import './ProfileScreen.scss';
 
 export default function ProfileScreen() {
   const [name, setName] = useState('');
@@ -82,7 +84,7 @@ export default function ProfileScreen() {
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append('file', file);
     setUploading(true);
 
     try {
@@ -103,17 +105,20 @@ export default function ProfileScreen() {
 
   return (
     <>
-      <div className="login-container">
-        <h2 className="login__title">User Profile</h2>
+      <div className="profile-container">
+        <h2 className="list-title">User Profile</h2>
+        {loading && <Loader />}
         {message && <p>{message}</p>}
         {error && <p>{error}</p>}
-        {messageUpdated && <p>Profile Updated</p>}
+        {messageUpdated && (
+          <Message variant="success">Profile Updated!</Message>
+        )}
         <form
           action=""
           onSubmit={submitHandler}
-          className="login__form-container"
+          className="profile__form-container"
         >
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="name">Name</label>
             <input
               id="name"
@@ -123,7 +128,7 @@ export default function ProfileScreen() {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="email">Email Address</label>
             <input
               id="email"
@@ -133,7 +138,7 @@ export default function ProfileScreen() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="password">Password</label>
             <input
               id="password"
@@ -147,13 +152,13 @@ export default function ProfileScreen() {
               onClick={() => setIsShown((prevState) => !prevState)}
             >
               {isShown ? (
-                <BiHide aria-labelledby="hide password" />
-              ) : (
                 <BiShow aria-labelledby="show password" />
+              ) : (
+                <BiHide aria-labelledby="hide password" />
               )}
             </button>
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               id="confirmPassword"
@@ -167,13 +172,13 @@ export default function ProfileScreen() {
               onClick={() => setIsConfirmedShown((prevState) => !prevState)}
             >
               {isConfirmedShown ? (
-                <BiHide aria-labelledby="hide password" />
-              ) : (
                 <BiShow aria-labelledby="show password" />
+              ) : (
+                <BiHide aria-labelledby="hide password" />
               )}
             </button>
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="image">Profile Image</label>
             <input
               id="image"
@@ -183,7 +188,7 @@ export default function ProfileScreen() {
             />
             {uploading && <p>Loading...</p>}
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="location">Location</label>
             <input
               id="location"
@@ -193,17 +198,18 @@ export default function ProfileScreen() {
               onChange={(e) => setLocation(e.target.value)}
             />
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="summary">Summary</label>
-            <input
+            <textarea
               id="summary"
               type="text"
               placeholder="Enter summary"
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
+              rows={10}
             />
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="website">Website</label>
             <input
               id="website"
@@ -213,7 +219,7 @@ export default function ProfileScreen() {
               onChange={(e) => setWebsite(e.target.value)}
             />
           </div>
-          <div className="login__form-items">
+          <div className="profile__form-items">
             <label htmlFor="github">Github URL</label>
             <input
               id="github"
@@ -223,8 +229,8 @@ export default function ProfileScreen() {
               onChange={(e) => setGithub(e.target.value)}
             />
           </div>
-          <div className="login__form-items">
-            <label htmlFor="linkedin">Summary</label>
+          <div className="profile__form-items">
+            <label htmlFor="linkedin">LinkedIn URL</label>
             <input
               id="linkedin"
               type="text"
@@ -233,7 +239,7 @@ export default function ProfileScreen() {
               onChange={(e) => setLinkedin(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-signin">
+          <button type="submit" className="btn btn-update">
             Update Profile
           </button>
         </form>

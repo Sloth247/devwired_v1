@@ -6,6 +6,11 @@ import Paginate from '../components/Paginate';
 import { listJobs, deleteJob, createJob } from '../actions/jobActions';
 import { JOB_CREATE_RESET } from '../constants/jobConstants';
 
+import Table from 'react-bootstrap/Table';
+
+import './JobListScreen.scss';
+import Loader from '../components/Loader';
+
 export default function JobListScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -62,20 +67,22 @@ export default function JobListScreen() {
   return (
     <>
       <div>
-        <h1>List of job listings</h1>
+        <h1 className="list-title">List of job listings</h1>
 
-        <button onClick={createJobHandler}>Create Job</button>
+        <button onClick={createJobHandler} className="btn-create">
+          Create a new listing
+        </button>
       </div>
-      {loadingDelete && <p>Loading...</p>}
+      {loadingDelete && <Loader />}
       {errorDelete && <p>{errorDelete}</p>}
       {loadingCreate && <p>Loading...</p>}
       {errorCreate && <p>{errorCreate}</p>}
       {loading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <table>
+        <Table responsive="sm" striped bordered={+true}>
           <thead>
             <tr>
               <th>ID</th>
@@ -138,7 +145,7 @@ export default function JobListScreen() {
                 </tr>
               ))}
           </tbody>
-        </table>
+        </Table>
       )}
       <Paginate pages={pages} page={page} isAdmin={true} />
     </>

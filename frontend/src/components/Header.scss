@@ -37,15 +37,35 @@
   &__user-icon {
     font-size: 1.4rem;
   }
+  &__img-container {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 0.3rem;
+    img {
+      width: 100%;
+    }
+  }
 }
 .dropdown {
   position: absolute;
-  background-color: variables.$color-bg;
+  top: 2rem;
+  right: 0;
+  background-color: #fff;
   color: variables.$color-very-dark-cyan;
   font-size: 0.85rem;
-  padding: 1rem 2rem;
+  line-height: 1.5rem;
+  padding: 1rem 1.2rem;
   border-radius: 4px;
+  box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
   z-index: 10;
+  text-align: center;
+  font-weight: variables.$font-bold;
+
   &-container {
     position: relative;
   }
@@ -60,5 +80,5 @@
 }
 .btn-logout {
   color: inherit;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }

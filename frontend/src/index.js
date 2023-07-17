@@ -5,6 +5,8 @@ import store from './store';
 import { CloudinaryContext } from 'cloudinary-react';
 import cloudinary from 'cloudinary-core';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import App from './App';
 
 const cloudinaryCore = new cloudinary.Cloudinary({

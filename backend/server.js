@@ -5,6 +5,8 @@ import errorHandler from './middleware/error.js';
 import connectDB from './config/db.js';
 import * as cloudinary from 'cloudinary';
 
+import cors from 'cors';
+
 // Route file
 import jobRoutes from './routes/jobRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -27,6 +29,8 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.use(cors({ origin: '*' }));
 
 // config cloudinary
 cloudinary.config({

@@ -5,6 +5,7 @@
   &__back {
     color: variables.$color-very-dark-cyan;
     font-weight: variables.$font-bold;
+    margin-top: 1rem;
     &:hover {
       text-decoration: underline;
     }
@@ -19,7 +20,7 @@
     position: relative;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
-
+    font-size: 0.9375rem;
     &-flex {
       display: flex;
       justify-content: flex-start;
@@ -54,6 +55,7 @@
     &-title {
       color: variables.$color-very-dark-cyan;
       margin-bottom: 0.5rem;
+      font-size: inherit;
     }
     &-flex {
       display: flex;

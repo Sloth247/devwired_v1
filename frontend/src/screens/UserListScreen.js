@@ -5,6 +5,11 @@ import { BsCheck } from 'react-icons/bs';
 import { RiDeleteBinFill, RiEdit2Fill } from 'react-icons/ri';
 import { listUsers, deleteUser } from '../actions/userActions';
 
+import Table from 'react-bootstrap/Table';
+
+import './UserListScreen.scss';
+import Loader from '../components/Loader';
+
 export default function UserListScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,11 +38,13 @@ export default function UserListScreen() {
 
   return (
     <>
-      <h1>Users</h1>
-      {error ? (
+      <h1 className="list-title">Users</h1>
+      {loading ? (
+        <Loader />
+      ) : error ? (
         <p>{error}</p>
       ) : (
-        <table>
+        <Table responsive="sm" striped bordered>
           <thead>
             <tr>
               <th>ID</th>
@@ -61,21 +68,37 @@ export default function UserListScreen() {
                   <td>
                     <a href={`mailto:${user.email}`}>{user.email}</a>
                   </td>
-                  <td>{user.isAdmin ? <BsCheck /> : ''}</td>
+                  <td>{user.location}</td>
+                  <td>{user.summary}</td>
+                  <td>
+                    <a href={user.website}>{user.website}</a>
+                  </td>
+                  <td>
+                    <a href={user.github}>{user.github}</a>
+                  </td>
+                  <td>
+                    <a href={user.github}>{user.linkedin}</a>
+                  </td>
+                  <td>
+                    <a href={user.github}>{user.isAdmin ? <BsCheck /> : ''}</a>
+                  </td>
                   <td>
                     <Link to={`/admin/user/${user._id}/edit`}>
-                      <button>
-                        <RiEdit2Fill />
+                      <button className="btn-edit">
+                        <RiEdit2Fill className="edit-icon" />
                       </button>
                     </Link>
-                    <button onClick={() => deleteHandler(user._id)}>
-                      <RiDeleteBinFill />
+                    <button
+                      onClick={() => deleteHandler(user._id)}
+                      className="btn-delete"
+                    >
+                      <RiDeleteBinFill className="delete-icon" />
                     </button>
                   </td>
                 </tr>
               ))}
           </tbody>
-        </table>
+        </Table>
       )}
     </>
   );
