@@ -6,6 +6,7 @@ import { calculateDate } from '../utils/CalculateDate';
 
 import './MyJobsScreen.scss';
 import Loader from '../components/Loader';
+import Message from '../components/Message';
 
 export default function MyJobsScreen() {
   const dispatch = useDispatch();
@@ -42,48 +43,52 @@ export default function MyJobsScreen() {
 
   return (
     <>
-      {loadingApplications && <Loader />}
-      {errorApplications && <p>{errorApplications}</p>}
-      <h1 className="myjobs__title">My Applications</h1>
-      <ul className="myjobs__list">
-        {applications &&
-          applications.map((application) => (
-            <li key={application._id} className="myjobs__item">
-              <div className="myjobs__inner-container">
-                <div className="myjobs__img-container">
-                  <img
-                    src={
-                      application.jobListing.logo.startsWith('/images')
-                        ? application.jobListing.logo
-                        : showCloudinaryImage(application)
-                    }
-                    alt={application.jobListing.company}
-                  />
+      <h1 className="list-title">My Applications</h1>
+      {loadingApplications ? (
+        <Loader />
+      ) : errorApplications ? (
+        <p>{errorApplications}</p>
+      ) : (
+        <ul className="myjobs__list">
+          {applications &&
+            applications.map((application) => (
+              <li key={application._id} className="myjobs__item">
+                <div className="myjobs__inner-container">
+                  <div className="myjobs__img-container">
+                    <img
+                      src={
+                        application.jobListing.logo.startsWith('/images')
+                          ? application.jobListing.logo
+                          : showCloudinaryImage(application)
+                      }
+                      alt={application.jobListing.company}
+                    />
+                  </div>
+                  <div>
+                    <Message variant="danger">{application.status}</Message>
+                    <Link
+                      to={`/job/${application.jobListing.id}`}
+                      className="myjobs__position"
+                    >
+                      {application.jobListing.position}
+                    </Link>
+                    <p>{application.jobListing.company}</p>
+                    <p>{application.jobListing.location}</p>
+                    <p className="myjobs__date">
+                      Applied on {calculateDate(application.createdAt)}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="myjobs__status">{application.status}</p>
-                  <Link
-                    to={`/job/${application.jobListing.id}`}
-                    className="myjobs__position"
-                  >
-                    {application.jobListing.position}
-                  </Link>
-                  <p>{application.jobListing.company}</p>
-                  <p>{application.jobListing.location}</p>
-                  <p className="myjobs__date">
-                    Applied on {calculateDate(application.createdAt)}
-                  </p>
-                </div>
-              </div>
-              <Link
-                to={`/application/${application._id}`}
-                className="myjobs__details"
-              >
-                View details
-              </Link>
-            </li>
-          ))}
-      </ul>
+                <Link
+                  to={`/application/${application._id}`}
+                  className="myjobs__details"
+                >
+                  View details
+                </Link>
+              </li>
+            ))}
+        </ul>
+      )}
     </>
   );
 }

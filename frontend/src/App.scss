@@ -28,10 +28,23 @@ body {
 .App {
   font-family: variables.$font-primary;
   font-size: 0.9375rem;
+  @include mixins.mq(lg) {
+    font-size: 1rem;
+  }
 }
 
 li {
   list-style: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
 }
 
 a {
@@ -63,6 +76,13 @@ button {
 .main {
   padding: 0 1.5rem;
   padding-bottom: 1.5rem;
+  @include mixins.mq(md) {
+    padding: 0 2.5rem 5rem 2.5rem;
+  }
+  &__inner {
+    max-width: 69.375rem;
+    margin: auto;
+  }
 }
 
 .attribution {
@@ -81,4 +101,7 @@ ul {
   font-size: 1.2rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  @include mixins.mq(md) {
+    font-size: 1.5rem;
+  }
 }

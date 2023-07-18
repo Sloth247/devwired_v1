@@ -2,26 +2,56 @@
 @use '../sass/mixins';
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 2rem 1.5rem 5rem 1.5rem;
   background-image: url('../../public/images/bg-header-mobile.svg');
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: variables.$color-dark-cyan;
-  color: variables.$color-bg;
   position: relative;
+
+  @include mixins.mq(md) {
+    padding: 3rem 2.5rem 5rem 2.5rem;
+  }
+
+  &__inner-container {
+    max-width: 69.375rem;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: variables.$color-bg;
+  }
   &__logo {
     font-style: italic;
     font-size: 1.6rem;
+
+    @include mixins.mq(md) {
+      font-size: 1.5remrem;
+    }
+    @include mixins.mq(lg) {
+      font-size: 2rem;
+    }
   }
   &__login {
     display: flex;
     align-items: center;
+    font-size: 0.85rem;
+    @include mixins.mq(md) {
+      font-size: 1.2rem;
+    }
+    @include mixins.mq(lg) {
+      font-size: 1.3rem;
+    }
     &-text {
       margin-left: 0.2rem;
+      @include mixins.mq(md) {
+        font-size: 1.1rem;
+        margin-left: 0.3rem;
+      }
+      @include mixins.mq(lg) {
+        font-size: 1.3rem;
+      }
     }
     &:hover {
       text-decoration: underline;
@@ -33,9 +63,20 @@
     align-items: center;
     gap: 0.2rem;
     font-size: 0.85rem;
+    @include mixins.mq(md) {
+      font-size: 1rem;
+    }
+    @include mixins.mq(lg) {
+      font-size: 1.3rem;
+    }
   }
   &__user-icon {
-    font-size: 1.4rem;
+    @include mixins.mq(md) {
+      font-size: 1.3rem;
+    }
+    @include mixins.mq(lg) {
+      font-size: 1.5rem;
+    }
   }
   &__img-container {
     width: 1.2rem;
@@ -46,9 +87,17 @@
     border-radius: 50%;
     overflow: hidden;
     margin-right: 0.3rem;
+    @include mixins.mq(md) {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.5rem;
+    }
     img {
       width: 100%;
     }
+  }
+  &__arrow {
+    font-size: 1.125rem;
   }
 }
 .dropdown {
@@ -57,14 +106,19 @@
   right: 0;
   background-color: #fff;
   color: variables.$color-very-dark-cyan;
-  font-size: 0.85rem;
+  font-size: 0.9375rem;
   line-height: 1.5rem;
-  padding: 1rem 1.2rem;
+  padding: 1rem 1.5rem;
   border-radius: 4px;
-  box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+  box-shadow: variables.$shadow-cyan;
   z-index: 10;
   text-align: center;
   font-weight: variables.$font-bold;
+
+  @include mixins.mq(md) {
+    padding: 2rem 2.5rem;
+    font-size: 1.125rem;
+  }
 
   &-container {
     position: relative;
@@ -73,6 +127,11 @@
     display: none;
   }
   &-item {
+    &:not(:last-child) {
+      @include mixins.mq(md) {
+        margin-bottom: 1rem;
+      }
+    }
     &:hover {
       color: variables.$color-dark-cyan;
     }

@@ -8,7 +8,7 @@
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    box-shadow: variables.$shadow-cyan;
     position: relative;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
@@ -24,7 +24,7 @@
   }
   &__container {
     font-weight: inherit;
-    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    box-shadow: variables.$shadow-cyan;
     border: 0.5px solid hsla(180, 8%, 52%, 0.233);
     border-radius: 0.3rem;
     margin-bottom: 1rem;
@@ -35,7 +35,7 @@
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    box-shadow: variables.$shadow-cyan;
     position: relative;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
@@ -72,14 +72,14 @@
 
   &__resume {
     border: 0.5px solid hsla(180, 8%, 52%, 0.233);
-    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    box-shadow: variables.$shadow-cyan;
     border-radius: 0.3rem;
     margin-bottom: 1rem;
     padding: 0.8rem;
   }
   &__coverletter {
     border: 0.5px solid hsla(180, 8%, 52%, 0.233);
-    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    box-shadow: variables.$shadow-cyan;
     border-radius: 0.3rem;
     margin-bottom: 1rem;
     padding: 0.8rem;
@@ -95,7 +95,7 @@
     max-width: 30ch;
     border: 1px solid hsla(180, 8%, 52%, 0.233);
     border-radius: 0.25em;
-    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    box-shadow: variables.$shadow-cyan;
     padding: 0.8rem 0.8rem;
     font-size: 1rem;
     cursor: pointer;

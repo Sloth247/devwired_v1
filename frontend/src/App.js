@@ -24,33 +24,35 @@ function App() {
       <div className="App">
         <Header />
         <main className="main">
-          <Routes>
-            <Route element={<HomeScreen />} path="/" />
-            <Route element={<JobDetailsScreen />} path="/job/:id" />
-            <Route
-              element={<JobListScreen />}
-              path="/admin/joblist/:pageNumber"
-            />
-            <Route element={<JobListScreen />} path="/admin/joblist" />
+          <div className="main__inner">
+            <Routes>
+              <Route element={<HomeScreen />} path="/" />
+              <Route element={<JobDetailsScreen />} path="/job/:id" />
+              <Route
+                element={<JobListScreen />}
+                path="/admin/joblist/:pageNumber"
+              />
+              <Route element={<JobListScreen />} path="/admin/joblist" />
 
-            <Route element={<JobEditScreen />} path="/admin/job/:id/edit" />
-            <Route element={<LoginScreen />} path="/login" />
-            <Route element={<RegisterScreen />} path="/register" />
-            <Route element={<ProfileScreen />} path="/profile" />
-            <Route element={<UserListScreen />} path="/admin/userlist" />
-            <Route element={<UserEditScreen />} path="/admin/user/:id/edit" />
-            <Route element={<ApplyScreen />} path="/apply/:id" />
-            <Route element={<ApplySuccessScreen />} path="/success/:id" />
-            <Route
-              element={<ApplicationListScreen />}
-              path="/admin/applicationlist"
-            />
-            <Route
-              element={<ApplicationDetailsScreen />}
-              path="/application/:id"
-            />
-            <Route element={<MyJobsScreen />} path="/myjobs" />
-          </Routes>
+              <Route element={<JobEditScreen />} path="/admin/job/:id/edit" />
+              <Route element={<LoginScreen />} path="/login" />
+              <Route element={<RegisterScreen />} path="/register" />
+              <Route element={<ProfileScreen />} path="/profile" />
+              <Route element={<UserListScreen />} path="/admin/userlist" />
+              <Route element={<UserEditScreen />} path="/admin/user/:id/edit" />
+              <Route element={<ApplyScreen />} path="/apply/:id" />
+              <Route element={<ApplySuccessScreen />} path="/success/:id" />
+              <Route
+                element={<ApplicationListScreen />}
+                path="/admin/applicationlist"
+              />
+              <Route
+                element={<ApplicationDetailsScreen />}
+                path="/application/:id"
+              />
+              <Route element={<MyJobsScreen />} path="/myjobs" />
+            </Routes>
+          </div>
         </main>
         <footer className="footer"></footer>
       </div>

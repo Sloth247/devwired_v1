@@ -49,89 +49,101 @@ export default function Header() {
 
   return (
     <header className="header">
-      <h1 className="header__logo">
-        <Link to="/">DevWired</Link>
-      </h1>
-      {!userInfo && (
-        <Link to="/login" className="header__login">
-          <HiUserCircle />
-          <span className="header__login-text">login</span>
-        </Link>
-      )}
-      {userInfo && !userInfo.isAdmin && user && (
-        <div className="dropdown-container" ref={dropdownRef}>
-          <button
-            className="header__user-name"
-            onClick={() => {
-              setIsShown((prevState) => !prevState);
-            }}
-            aria-expanded={isShown ? true : false}
-            aria-controls="dropdown"
-          >
-            {!user.image ? (
-              <HiUserCircle className="header__user-icon" alt={user.name} />
-            ) : (
-              <div className="header__img-container">
-                <img
-                  src={
-                    user.image.includes('cloudinary')
-                      ? cloudinaryImageUrl
-                      : user.image
-                  }
-                  alt={user.name}
-                />
-              </div>
-            )}
-            {userInfo.name}
-            {isShown ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
-          </button>
-          <ul className={!isShown ? 'dropdown hide' : 'dropdown'} id="dropdown">
-            <li className="dropdown-item">
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li className="dropdown-item">
-              <Link to="/myjobs">My jobs</Link>
-            </li>
-            <li className="dropdown-item">
-              <button onClick={logoutHandler} className="btn-logout">
-                Logout
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}{' '}
-      {userInfo && userInfo.isAdmin && (
-        <div className="dropdown-container" ref={dropdownRef}>
-          <button
-            className="header__user-name"
-            onClick={() => {
-              setIsShown((prevState) => !prevState);
-            }}
-            aria-expanded={isShown ? true : false}
-            aria-controls="dropdown"
-          >
-            <HiUserCircle className="header__user-icon" />
-            <span>Admin</span>
-            {isShown ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
-          </button>
-          <ul className={!isShown ? 'dropdown hide' : 'dropdown'} id="dropdown">
-            <li className="dropdown-item">
-              <Link to="/admin/userlist">Users</Link>
-            </li>
-            <li className="dropdown-item">
-              <Link to="/admin/joblist">Job Listing</Link>
-            </li>
-            <li className="dropdown-item">
-              <Link to="/admin/applicationlist">Applications</Link>
-            </li>
-            <li className="dropdown-item">
-              <button onClick={logoutHandler} className="btn-logout">
-                Logout
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+      <div className="header__inner-container">
+        <h1 className="header__logo">
+          <Link to="/">DevWired</Link>
+        </h1>
+        {!userInfo && (
+          <Link to="/login" className="header__login">
+            <HiUserCircle />
+            <span className="header__login-text">Login</span>
+          </Link>
+        )}
+        {userInfo && !userInfo.isAdmin && user && (
+          <div className="dropdown-container" ref={dropdownRef}>
+            <button
+              className="header__user-name"
+              onClick={() => {
+                setIsShown((prevState) => !prevState);
+              }}
+              aria-expanded={isShown ? true : false}
+              aria-controls="dropdown"
+            >
+              {!user.image ? (
+                <HiUserCircle className="header__user-icon" alt={user.name} />
+              ) : (
+                <div className="header__img-container">
+                  <img
+                    src={
+                      user.image.includes('cloudinary')
+                        ? cloudinaryImageUrl
+                        : user.image
+                    }
+                    alt={user.name}
+                  />
+                </div>
+              )}
+              <span>{userInfo.name}</span>
+              {isShown ? (
+                <MdKeyboardArrowUp className="header__arrow" />
+              ) : (
+                <MdKeyboardArrowDown className="header__arrow" />
+              )}
+            </button>
+            <ul
+              className={!isShown ? 'dropdown hide' : 'dropdown'}
+              id="dropdown"
+            >
+              <li className="dropdown-item">
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li className="dropdown-item">
+                <Link to="/myjobs">My jobs</Link>
+              </li>
+              <li className="dropdown-item">
+                <button onClick={logoutHandler} className="btn-logout">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}{' '}
+        {userInfo && userInfo.isAdmin && (
+          <div className="dropdown-container" ref={dropdownRef}>
+            <button
+              className="header__user-name"
+              onClick={() => {
+                setIsShown((prevState) => !prevState);
+              }}
+              aria-expanded={isShown ? true : false}
+              aria-controls="dropdown"
+            >
+              <HiUserCircle className="header__user-icon" />
+              <span>Admin</span>
+              {isShown ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+            </button>
+            <ul
+              className={!isShown ? 'dropdown hide' : 'dropdown'}
+              id="dropdown"
+            >
+              <li className="dropdown-item">
+                <Link to="/admin/userlist">Users</Link>
+              </li>
+              <li className="dropdown-item">
+                <Link to="/admin/joblist">Job Listing</Link>
+              </li>
+              <li className="dropdown-item">
+                <Link to="/admin/applicationlist">Applications</Link>
+              </li>
+              <li className="dropdown-item">
+                <button onClick={logoutHandler} className="btn-logout">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
     </header>
   );
 }

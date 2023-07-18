@@ -55,7 +55,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <>
+    <div className="home__inner-container">
       {queryParams && (
         <Filterbar
           queryParams={queryParams}
@@ -75,86 +75,94 @@ const HomeScreen = () => {
                 className={job.featured ? 'post featured' : 'post'}
                 key={job._id}
               >
-                <div className="post__img-container">
-                  <img
-                    src={
-                      job.logo.includes('cloudinary')
-                        ? job.logo.slice(1)
-                        : job.logo
-                    }
-                    alt={job.company}
-                  />
-                </div>
-                <div className="post__upper-container">
-                  <div className="post__company-container">
-                    <h2 className="post__company">{job.company}</h2>
-                    {job.isNew && <span className="post__label new">new!</span>}
-                    {job.featured && (
-                      <span className="post__label featured">featured</span>
-                    )}
-                  </div>
-                  <Link to={`/job/${job._id}`}>
-                    <h3 className="post__job-title">{job.position}</h3>
-                  </Link>
-                  <div className="post__data">
-                    <span className="post__date">
-                      {job.postedAt
-                        ? job.postedAt
-                        : calculateDate(job.createdAt)}
-                    </span>
-                    <div className="post__dot"></div>
-                    <span className="post__hours">{job.contract}</span>
-                    <div className="post__dot"></div>
-                    <span className="post__location">{job.location}</span>
-                  </div>
-                </div>
-                <div className="post__lower-container">
-                  <button
-                    className="post__category"
-                    name="role"
-                    value={job.role}
-                    onClick={(e) => addQuery('role', e.currentTarget.value)}
-                  >
-                    <span>{job.role}</span>
-                  </button>{' '}
-                  <button
-                    className="post__category"
-                    value={job.level}
-                    onClick={(e) => addQuery('level', e.currentTarget.value)}
-                  >
-                    <span>{job.level}</span>
-                  </button>
-                  {job.languages.map((language, index) => (
-                    <button
-                      className="post__category"
-                      name="language"
-                      value={language}
-                      onClick={(e) =>
-                        addQuery('languages', e.currentTarget.value)
+                <div className="post__grid">
+                  <div className="post__img-container">
+                    <img
+                      src={
+                        job.logo.includes('cloudinary')
+                          ? job.logo.slice(1)
+                          : job.logo
                       }
-                      key={index}
-                    >
-                      <span>{language}</span>
-                    </button>
-                  ))}
-                  {job.tools.map((tool, index) => (
+                      alt={job.company}
+                    />
+                  </div>
+
+                  <div className="post__upper-container">
+                    <div className="post__company-container">
+                      <h2 className="post__company">{job.company}</h2>
+                      {job.isNew && (
+                        <span className="post__label new">new!</span>
+                      )}
+                      {job.featured && (
+                        <span className="post__label featured">featured</span>
+                      )}
+                    </div>
+                    <Link to={`/job/${job._id}`}>
+                      <h3 className="post__job-title">{job.position}</h3>
+                    </Link>
+                    <div className="post__data">
+                      <span className="post__date">
+                        {job.postedAt
+                          ? job.postedAt
+                          : calculateDate(job.createdAt)}
+                      </span>
+                      <div className="post__dot"></div>
+                      <span className="post__hours">{job.contract}</span>
+                      <div className="post__dot"></div>
+                      <span className="post__location">{job.location}</span>
+                    </div>
+                  </div>
+
+                  <div className="post__lower-container">
                     <button
                       className="post__category"
-                      name="tool"
-                      value={tool}
-                      onClick={(e) => addQuery('tools', e.currentTarget.value)}
-                      key={index}
+                      name="role"
+                      value={job.role}
+                      onClick={(e) => addQuery('role', e.currentTarget.value)}
                     >
-                      <span>{tool}</span>
+                      <span>{job.role}</span>
+                    </button>{' '}
+                    <button
+                      className="post__category"
+                      value={job.level}
+                      onClick={(e) => addQuery('level', e.currentTarget.value)}
+                    >
+                      <span>{job.level}</span>
                     </button>
-                  ))}
+                    {job.languages.map((language, index) => (
+                      <button
+                        className="post__category"
+                        name="language"
+                        value={language}
+                        onClick={(e) =>
+                          addQuery('languages', e.currentTarget.value)
+                        }
+                        key={index}
+                      >
+                        <span>{language}</span>
+                      </button>
+                    ))}
+                    {job.tools.map((tool, index) => (
+                      <button
+                        className="post__category"
+                        name="tool"
+                        value={tool}
+                        onClick={(e) =>
+                          addQuery('tools', e.currentTarget.value)
+                        }
+                        key={index}
+                      >
+                        <span>{tool}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </li>
             ))}
         </ul>
       )}
       <Paginate pages={pages} page={page} addQuery={addQuery} />
-    </>
+    </div>
   );
 };
 

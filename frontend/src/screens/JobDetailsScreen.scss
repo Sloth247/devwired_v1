@@ -2,21 +2,13 @@
 @use '../sass/mixins';
 
 .job {
-  &__back {
-    color: variables.$color-very-dark-cyan;
-    font-weight: variables.$font-bold;
-    margin-top: 1rem;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
   &__header {
     font-size: 1rem;
     color: variables.$color-very-dark-cyan;
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 5px 10px 10px rgb(124, 143, 143, 0.1);
+    box-shadow: variables.$shadow-cyan;
     position: relative;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
@@ -26,6 +18,7 @@
       justify-content: flex-start;
       align-items: center;
       margin-bottom: 0.5rem;
+      margin-top: 1rem;
     }
     &-other {
       color: variables.$color-grey-cyan;
@@ -45,6 +38,9 @@
   }
   &__position {
     font-size: 1rem;
+    @include mixins.mq(md) {
+      font-size: 1.2rem;
+    }
   }
   &__company {
     font-size: 1rem;

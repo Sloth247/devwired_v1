@@ -49,9 +49,6 @@ const JobDetailsScreen = () => {
 
   return (
     <>
-      <Link to="/" className="job__back">
-        Go back
-      </Link>
       {loading ? (
         <Loader />
       ) : error ? (

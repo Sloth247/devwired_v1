@@ -4,13 +4,19 @@
   //     @content;
   //   }
   // }
-  @if $breakpoint == medium {
+  @if $breakpoint == md {
     @media screen and (min-width: 40em) {
       @content;
     }
   }
 
-  @if $breakpoint == large {
+  @if $breakpoint == home {
+    @media screen and (min-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == lg {
     @media screen and (min-width: 80em) {
       @content;
     }

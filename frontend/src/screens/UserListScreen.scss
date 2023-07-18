@@ -12,3 +12,12 @@
     color: red;
   }
 }
+
+.table-responsive-sm {
+  overflow-x: auto;
+  width: 100%;
+  display: block;
+  & > .table {
+    width: 100%;
+  }
+}
