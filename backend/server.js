@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
@@ -5,6 +6,7 @@ import errorHandler from './middleware/error.js';
 import connectDB from './config/db.js';
 import * as cloudinary from 'cloudinary';
 
+const __dirname = path.resolve();
 import cors from 'cors';
 
 // Route file
@@ -44,6 +46,21 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/upload', uploadRoutes);
+
+if (process.env.NODE_ENV === 'production') {
+  // app.use('/uploads', express.static('/var/data/uploads'));
+  app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  );
+} else {
+  // const __dirname = path.resolve();
+  // app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+  app.get('/', (req, res) => {
+    res.send('API is running....');
+  });
+}
 
 app.use(errorHandler);
 
