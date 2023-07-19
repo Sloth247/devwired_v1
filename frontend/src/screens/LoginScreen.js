@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { BiShow, BiHide } from 'react-icons/bi';
 import { login } from '../actions/userActions';
+import Message from '../components/Message';
 
 import './LoginScreen.scss';
 import Loader from '../components/Loader';
@@ -45,13 +46,14 @@ export default function HomeScreen() {
         </Link>
       </p>
       <p>
-        This is a demo webisite for job search using MERN stack. To try out
+        This is a demo website for job search using the MERN stack. To try out
         admin account, please login as email: "admin@example.com" password:
-        "123456". To try out customer account, please login as email:
-        "john@example.com" password: "123456".{' '}
+        "123456". <br />
+        To try out customer account, please create your account or login as
+        email: "john@example.com" password: "123456".
       </p>
       {loading && <Loader />}
-      {error && <p>{error}</p>}
+      {error && <Message variant="danger">{error}</Message>}
       <form
         action=""
         onSubmit={submitHandler}
