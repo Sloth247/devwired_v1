@@ -46,6 +46,11 @@ const ApplicationDetailsScreen = () => {
   useEffect(() => {
     if (application) {
       setStatus(application.status);
+      if (application.user && user.isAdmin) {
+        // dispatch({ type: USER_UPDATE_PROFILE_RESET });
+        dispatch(getUserDetails(application.user));
+      }
+      console.log(application.user.name);
     } else if (!userInfo) {
       navigate('/login');
     } else if (!user || !user.name) {
@@ -54,7 +59,7 @@ const ApplicationDetailsScreen = () => {
     } else {
       dispatch(getApplicationDetails(id));
     }
-  }, [application, dispatch, id, user]);
+  }, [application, dispatch, id, user, userInfo, navigate]);
 
   const handleStatusChange = (e) => {
     setStatus(e.target.value);
@@ -101,7 +106,7 @@ const ApplicationDetailsScreen = () => {
                   <h4 className="application-details__contact-title">
                     Full Name
                   </h4>
-                  <p>{user.name}</p>
+                  <p>{user.isAdmin ? application.user.name : user.name}</p>
                 </div>
               </div>
               <div className="application-details__contact-item">
@@ -109,7 +114,7 @@ const ApplicationDetailsScreen = () => {
                   <h4 className="application-details__contact-title">
                     Email Address
                   </h4>
-                  <p>{user.email}</p>
+                  <p>{user.isAdmin ? application.user.email : user.email}</p>
                 </div>
               </div>
               <div className="application-details__contact-item">
@@ -118,8 +123,10 @@ const ApplicationDetailsScreen = () => {
                     Location
                   </h4>
                   <p>
-                    {application.user.location ? (
+                    {user.isAdmin ? (
                       <p>{application.user.location}</p>
+                    ) : user.location ? (
+                      user.location
                     ) : (
                       'N/A'
                     )}
@@ -132,8 +139,10 @@ const ApplicationDetailsScreen = () => {
                     Phone Number
                   </h4>
                   <p>
-                    {application.user.phone ? (
+                    {user.isAdmin ? (
                       <p>{application.user.phone}</p>
+                    ) : user.phone ? (
+                      user.phone
                     ) : (
                       'N/A'
                     )}
