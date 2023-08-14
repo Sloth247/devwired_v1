@@ -20,11 +20,16 @@ const getJobs = asyncHandler(async (req, res, next) => {
   let page = 1;
   if (reqQuery.pageNumber && !isNaN(reqQuery.pageNumber)) {
     page = Number(reqQuery.pageNumber);
+    console.log(reqQuery.pageNumber);
   }
 
   const count = await Job.countDocuments();
   // Finding resource
-  const jobs = await Job.find(JSON.parse(queryStr))
+  const jobs = await Job.find(
+    reqQuery.pageNumber && !isNaN(reqQuery.pageNumber)
+      ? {}
+      : JSON.parse(queryStr)
+  )
     .sort({ featured: -1, isNew: -1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
@@ -146,17 +151,14 @@ const updateJob = asyncHandler(async (req, res, next) => {
 // @routes DELETE /api/jobs/:id
 // @access Private/Admin
 const deleteJob = asyncHandler(async (req, res, next) => {
-  const job = await Job.findById(req.params.id);
+  const job = await Job.findByIdAndDelete(req.params.id);
   if (job) {
-    await job.remove();
     res.json({ message: 'Job removed' });
   } else {
     return next(
       new ErrorResponse(`Job not found with id of ${req.params.id}`, 404)
     );
   }
-
-  res.status(200).json({ success: true, data: {} });
 });
 
 // @desc Update logo image

@@ -29,6 +29,9 @@
       position: relative;
       &:first-child {
         margin-bottom: 1rem;
+        @include mixins.mq(lg) {
+          margin-bottom: 2rem;
+        }
       }
     }
   }
@@ -41,6 +44,10 @@
   font-size: 1rem;
   padding: 0.45rem 2rem 0.25rem 2rem;
   border-radius: 8px;
+  @include mixins.mq(lg) {
+    margin-top: 3rem;
+    font-size: 1.2rem;
+  }
 }
 
 .btn-showhide {

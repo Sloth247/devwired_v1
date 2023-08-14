@@ -47,11 +47,15 @@ export default function HomeScreen() {
       </p>
       <p>
         This is a demo website for job search using the MERN stack. To try out
-        admin account, please login as email: "admin@example.com" password:
-        "123456". <br />
-        To try out customer account, please create your account or login as
-        email: "john@example.com" password: "123456".
+        the admin account, please log in with the following credentials: email:
+        'admin@example.com' password: '123456'.
       </p>
+      <p>
+        To try out the customer account, please either create your account or
+        log in with the following credentials: email: 'john@example.com'
+        password: '123456'.
+      </p>
+
       {loading && <Loader />}
       {error && <Message variant="danger">{error}</Message>}
       <form

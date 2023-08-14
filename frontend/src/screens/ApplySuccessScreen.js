@@ -45,10 +45,13 @@ export default function ApplySuccessScreen() {
         </p>
       )}
       <div className="success__btn-container">
-        <Link to={`/application/${id}`} className="success__details-btn btn">
+        <Link
+          to={`/application/${id}`}
+          className="success__details-btn success-btn"
+        >
           See the application details
         </Link>
-        <Link to="/" className="success__other-btn btn">
+        <Link to="/" className="success__other-btn success-btn">
           Search Other Jobs
         </Link>
       </div>

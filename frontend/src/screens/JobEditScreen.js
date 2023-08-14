@@ -271,7 +271,7 @@ const JobEditScreen = () => {
               <textarea
                 id="languages"
                 type="text"
-                placeholder="Enter languages separated by commas"
+                placeholder="Enter languages separated by commas (e.g. JavaScript, C++)"
                 value={languages}
                 onChange={(e) => setLanguages(e.target.value)}
               ></textarea>
@@ -282,7 +282,7 @@ const JobEditScreen = () => {
               <textarea
                 id="tools"
                 type="text"
-                placeholder="Enter tools separated by commas"
+                placeholder="Enter tools separated by commas (e.g. React, Ruby)"
                 value={tools}
                 onChange={(e) => setTools(e.target.value)}
               ></textarea>

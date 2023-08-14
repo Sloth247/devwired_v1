@@ -12,6 +12,8 @@ import {
 import { calculateDate } from '../utils/CalculateDate';
 import { getUserDetails } from '../actions/userActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import { USER_DETAILS_RESET } from '../constants/userConstants';
+import { APPLICATION_DETAILS_RESET } from '../constants/applicationConstants';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
@@ -46,14 +48,16 @@ const ApplicationDetailsScreen = () => {
   useEffect(() => {
     if (application) {
       setStatus(application.status);
+
       if (application.user && user.isAdmin) {
-        // dispatch({ type: USER_UPDATE_PROFILE_RESET });
+        dispatch({ type: APPLICATION_DETAILS_RESET });
+        dispatch({ type: USER_DETAILS_RESET });
         dispatch(getUserDetails(application.user));
       }
       console.log(application.user.name);
     } else if (!userInfo) {
       navigate('/login');
-    } else if (!user || !user.name) {
+    } else if ((!user || !user.name) && !user.isAdmin) {
       dispatch({ type: USER_UPDATE_PROFILE_RESET });
       dispatch(getUserDetails('profile'));
     } else {
@@ -123,13 +127,9 @@ const ApplicationDetailsScreen = () => {
                     Location
                   </h4>
                   <p>
-                    {user.isAdmin ? (
-                      <p>{application.user.location}</p>
-                    ) : user.location ? (
-                      user.location
-                    ) : (
-                      'N/A'
-                    )}
+                    {user.isAdmin
+                      ? application.user.location
+                      : user.location || 'N/A'}
                   </p>
                 </div>
               </div>
@@ -139,13 +139,9 @@ const ApplicationDetailsScreen = () => {
                     Phone Number
                   </h4>
                   <p>
-                    {user.isAdmin ? (
-                      <p>{application.user.phone}</p>
-                    ) : user.phone ? (
-                      user.phone
-                    ) : (
-                      'N/A'
-                    )}
+                    {user.isAdmin
+                      ? application.user.phone
+                      : user.phone || 'N/A'}
                   </p>
                 </div>
               </div>

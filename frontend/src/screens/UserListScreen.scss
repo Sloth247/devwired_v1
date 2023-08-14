@@ -14,9 +14,11 @@
 }
 
 .table-responsive-sm {
+  font-size: 0.875rem;
   overflow-x: auto;
-  width: 100%;
+  // width: 100%;
   display: block;
+
   & > .table {
     width: 100%;
   }

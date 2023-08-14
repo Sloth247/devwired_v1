@@ -14,7 +14,7 @@ import Loader from '../components/Loader';
 export default function JobListScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const param = useParams();
+  const pageNumber = useParams();
 
   const jobList = useSelector((state) => state.jobList);
   const { loading, error, jobs, pages, page } = jobList;
@@ -43,16 +43,29 @@ export default function JobListScreen() {
     if (!userInfo || !userInfo.isAdmin) {
       navigate('/login');
     }
-    if (successCreate && createdJob) {
+    if (successCreate && createdJob && createdJob._id) {
       navigate(`/admin/job/${createdJob._id}/edit`);
+      console.log(createdJob._id);
     } else {
-      if (param) {
-        dispatch(listJobs(param));
-      } else {
-        dispatch(listJobs());
-      }
+      dispatch(listJobs(pageNumber));
+      console.log(pageNumber);
+      // if (pageNumber) {
+      //   const queryParams = { pageNumber: parseInt(pageNumber) };
+      //   dispatch(listJobs(queryParams));
+      //   console.log(queryParams);
+      // } else {
+      //   dispatch(listJobs());
+      // }
     }
-  }, [dispatch, navigate, userInfo, successDelete, successCreate, createdJob]);
+  }, [
+    dispatch,
+    navigate,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdJob,
+    pageNumber,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
@@ -62,6 +75,11 @@ export default function JobListScreen() {
 
   const createJobHandler = (job) => {
     dispatch(createJob());
+    console.log(createdJob);
+  };
+
+  const formatSalary = (salary) => {
+    return salary ? salary.toLocaleString() : '';
   };
 
   return (
@@ -128,8 +146,8 @@ export default function JobListScreen() {
                   <td>
                     {job.qualifications.map((qualification) => qualification)}
                   </td>
-                  <td>{job.salaryStart}</td>
-                  <td>{job.salaryEnd}</td>
+                  <td>{formatSalary(job.salaryStart)}</td>
+                  <td>{formatSalary(job.salaryEnd)}</td>
                   <td>{job.hours}</td>
                   <td>{job.responsibilities}</td>
                   <td>{job.remarks}</td>

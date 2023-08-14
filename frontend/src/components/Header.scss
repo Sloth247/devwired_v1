@@ -13,10 +13,14 @@
   @include mixins.mq(md) {
     padding: 3rem 2.5rem 5rem 2.5rem;
   }
+  @include mixins.mq(lg) {
+    padding: 3rem 5rem 5rem 5rem;
+    background-image: url('../../public/images/bg-header-desktop.svg');
+  }
 
   &__inner-container {
-    max-width: 69.375rem;
-    margin: auto;
+    // max-width: 69.375rem;
+    // margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -118,6 +122,10 @@
   @include mixins.mq(md) {
     padding: 2rem 2.5rem;
     font-size: 1.125rem;
+  }
+
+  @include mixins.mq(lg) {
+    top: 3rem;
   }
 
   &-container {

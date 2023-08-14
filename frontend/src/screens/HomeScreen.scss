@@ -1,6 +1,12 @@
 @use '../sass/variables';
 @use '../sass/mixins';
 
+.home {
+  &__inner-container {
+    max-width: 69.375rem;
+    margin: auto;
+  }
+}
 .post {
   background-color: #fff;
   padding-left: 1.5rem;

@@ -5,6 +5,7 @@ import {
   APPLICATION_CREATE_SUCCESS,
   APPLICATION_DETAILS_FAIL,
   APPLICATION_DETAILS_REQUEST,
+  APPLICATION_DETAILS_RESET,
   APPLICATION_DETAILS_SUCCESS,
   APPLICATION_LIST_FAIL,
   APPLICATION_LIST_MY_FAIL,
@@ -65,6 +66,12 @@ export const applicationDetailsReducer = (
         error: action.payload,
       };
 
+    case APPLICATION_DETAILS_RESET:
+      return {
+        loading: true,
+        jobListing: {},
+      };
+
     default:
       return state;
   }
@@ -91,7 +98,6 @@ export const applicationListMyReducer = (
       };
     case APPLICATION_LIST_MY_RESET:
       return { applications: [] };
-
     default:
       return state;
   }
