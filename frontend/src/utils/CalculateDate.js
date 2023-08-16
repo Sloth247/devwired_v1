@@ -11,7 +11,7 @@ export function calculateDate(createdAt) {
   } else if (diffDays === 1) {
     timeString = 'yesterday';
   } else if (diffDays < 7) {
-    timeString = `${diffDays} days ago`;
+    timeString = `${diffDays}d ago`;
   } else {
     const formattedDate = new Date(createdAt);
     const options = { month: 'short', day: 'numeric' };

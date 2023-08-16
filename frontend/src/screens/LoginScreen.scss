@@ -5,6 +5,8 @@
   &-container {
     color: variables.$color-very-dark-cyan;
     padding-top: 2rem;
+    max-width: 69.375rem;
+    margin: auto;
   }
 
   &__title {
