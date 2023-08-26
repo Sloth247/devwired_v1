@@ -1,0 +1,30 @@
+@use '../sass/variables';
+@use '../sass/mixins';
+
+.job-edit {
+  max-width: 69.375rem;
+  margin: auto;
+  &__form-items {
+    display: grid;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+}
+
+.back-btn {
+  &__container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+select {
+  // Additional resets for further consistency
+  background-color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+label {
+  text-transform: capitalize;
+}

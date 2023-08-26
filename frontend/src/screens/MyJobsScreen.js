@@ -42,7 +42,7 @@ export default function MyJobsScreen() {
   }, [dispatch, navigate, userInfo]);
 
   return (
-    <>
+    <div className="myjobs__container">
       <h1 className="list-title">My Applications</h1>
       {loadingApplications ? (
         <Loader />
@@ -81,7 +81,7 @@ export default function MyJobsScreen() {
                 </div>
                 <Link
                   to={`/application/${application._id}`}
-                  className="myjobs__details"
+                  className="myjobs__details btn"
                 >
                   View details
                 </Link>
@@ -89,6 +89,6 @@ export default function MyJobsScreen() {
             ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }

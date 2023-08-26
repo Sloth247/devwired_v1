@@ -80,7 +80,7 @@ const ApplicationDetailsScreen = () => {
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
-    <>
+    <div className="application-details">
       <div className="application-details__overview">
         <p className="application-details__position">
           {application.jobListing.position}
@@ -94,9 +94,7 @@ const ApplicationDetailsScreen = () => {
 
       <div className="application-details__details">
         <h1 className="application-details__title">Application details</h1>
-        <h3 className="application-details__details-heading">
-          Contact information
-        </h3>
+
         {messageUpdated && <Message variant="success">Status Updated!</Message>}
         {loadingUser ? (
           <Loader />
@@ -104,63 +102,73 @@ const ApplicationDetailsScreen = () => {
           <Message variant="danger">{errorUser}</Message>
         ) : (
           <>
-            <div className="application-details__container">
-              <div className="application-details__contact-item">
-                <div className="application-details__contact-container">
-                  <h4 className="application-details__contact-title">
-                    Full Name
-                  </h4>
-                  <p>{user.isAdmin ? application.user.name : user.name}</p>
+            <div className="application-details__item">
+              <h3 className="application-details__details-heading">
+                Contact information
+              </h3>
+              <div className="application-details__container">
+                <div className="application-details__contact-item">
+                  <div className="application-details__contact-container">
+                    <h4 className="application-details__contact-title">
+                      Full Name
+                    </h4>
+                    <p>{user.isAdmin ? application.user.name : user.name}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="application-details__contact-item">
-                <div className="application-details__contact-container">
-                  <h4 className="application-details__contact-title">
-                    Email Address
-                  </h4>
-                  <p>{user.isAdmin ? application.user.email : user.email}</p>
+                <div className="application-details__contact-item">
+                  <div className="application-details__contact-container">
+                    <h4 className="application-details__contact-title">
+                      Email Address
+                    </h4>
+                    <p>{user.isAdmin ? application.user.email : user.email}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="application-details__contact-item">
-                <div className="application-details__contact-container">
-                  <h4 className="application-details__contact-title">
-                    Location
-                  </h4>
-                  <p>
-                    {user.isAdmin
-                      ? application.user.location
-                      : user.location || 'N/A'}
-                  </p>
+                <div className="application-details__contact-item">
+                  <div className="application-details__contact-container">
+                    <h4 className="application-details__contact-title">
+                      Location
+                    </h4>
+                    <p>
+                      {user.isAdmin
+                        ? application.user.location
+                        : user.location || 'N/A'}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="application-details__contact-item">
-                <div className="application-details__contact-container">
-                  <h4 className="application-details__contact-title">
-                    Phone Number
-                  </h4>
-                  <p>
-                    {user.isAdmin
-                      ? application.user.phone
-                      : user.phone || 'N/A'}
-                  </p>
+                <div className="application-details__contact-item">
+                  <div className="application-details__contact-container">
+                    <h4 className="application-details__contact-title">
+                      Phone Number
+                    </h4>
+                    <p>
+                      {user.isAdmin
+                        ? application.user.phone
+                        : user.phone || 'N/A'}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <h3 className="application-details__details-heading">Resume</h3>
-            <div className="application-details__resume">
-              <a href={resumeUrl} download>
-                View Resume
-              </a>
+            <div className="application-details__item">
+              <h3 className="application-details__details-heading">Resume</h3>
+              <div className="application-details__resume">
+                <a href={resumeUrl} download>
+                  View Resume
+                </a>
+              </div>
             </div>
 
-            <h3 className="application-details__details-heading">
-              Supporting documents
-            </h3>
-            <div className="application-details__coverletter">
-              <a href={coverletterUrl} download>
-                View Coverletter
-              </a>
+            <div className="application-details__item">
+              <h3 className="application-details__details-heading">
+                Supporting documents
+              </h3>
+
+              <div className="application-details__coverletter">
+                <a href={coverletterUrl} download>
+                  View Coverletter
+                </a>
+              </div>
             </div>
 
             <form
@@ -193,14 +201,17 @@ const ApplicationDetailsScreen = () => {
                   <span className="focus"></span>
                 </div>
               </div>
-              <button type="submit" className="application-details__status-btn">
+              <button
+                type="submit"
+                className="application-details__status-btn btn"
+              >
                 Update Status
               </button>
             </form>
           </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -41,7 +41,8 @@ export default function ApplySuccessScreen() {
         <p>{errorDetails}</p>
       ) : (
         <p className="success__message">
-          You will get an email confirmation at {email}
+          You will get an email confirmation at{' '}
+          <span className="success__message-email">{email}</span>
         </p>
       )}
       <div className="success__btn-container">

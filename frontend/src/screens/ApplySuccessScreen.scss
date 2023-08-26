@@ -13,11 +13,16 @@
   }
   &__message {
     margin-bottom: 2rem;
+    &-email {
+      text-decoration: underline dotted variables.$color-dark-cyan 3px;
+    }
   }
   &__btn-container {
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
+    max-width: 20rem;
+    margin: auto;
   }
 }
 .img-container {
@@ -39,4 +44,9 @@
   font-size: 1rem;
   padding: 0.6rem 2rem 0.5rem 2rem;
   border-radius: 8px;
+  &:hover {
+    background-color: variables.$color-bg;
+    border: solid 1px variables.$color-dark-cyan;
+    color: variables.$color-dark-cyan;
+  }
 }

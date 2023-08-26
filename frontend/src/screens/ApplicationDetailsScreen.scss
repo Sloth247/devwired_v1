@@ -2,6 +2,9 @@
 @use '../sass/mixins';
 
 .application-details {
+  max-width: 69.375rem;
+  margin: auto;
+
   &__overview {
     font-size: 1rem;
     color: variables.$color-very-dark-cyan;
@@ -12,22 +15,39 @@
     position: relative;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
+    @include mixins.mq(lg) {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      padding: 2.5rem;
+    }
   }
   &__position {
     font-weight: variables.$font-bold;
     line-height: 1.5rem;
     font-size: 1rem;
+    @include mixins.mq(lg) {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
   }
   &__date {
     color: variables.$color-grey-cyan;
     font-size: 0.9375rem;
+    @include mixins.mq(lg) {
+      font-size: 1.2rem;
+    }
+  }
+  &__item {
+    margin-bottom: 1rem;
+    @include mixins.mq(lg) {
+      margin-bottom: 2rem;
+    }
   }
   &__container {
     font-weight: inherit;
     box-shadow: variables.$shadow-cyan;
     border: 0.5px solid hsla(180, 8%, 52%, 0.233);
     border-radius: 0.3rem;
-    margin-bottom: 1rem;
   }
   &__details {
     font-size: 1rem;
@@ -39,16 +59,27 @@
     position: relative;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
+    @include mixins.mq(lg) {
+      font-size: 1.2rem;
+      padding: 2.5rem;
+    }
     &-heading {
       font-size: 1rem;
       font-weight: variables.$font-bold;
       color: variables.$color-grey-cyan;
       margin-bottom: 0.5rem;
+      @include mixins.mq(lg) {
+        font-size: 1.2rem;
+      }
     }
   }
   &__title {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    @include mixins.mq(lg) {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__contact {
@@ -67,6 +98,9 @@
       font-size: 1rem;
       font-weight: inherit;
       color: variables.$color-grey-cyan;
+      @include mixins.mq(lg) {
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -118,6 +152,9 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 2rem;
+      @include mixins.mq(lg) {
+        margin-bottom: 3rem;
+      }
       & select {
         // A reset of styles, including removing the default dropdown arrow
         appearance: none;
@@ -133,6 +170,10 @@
         line-height: inherit;
         outline: none;
         grid-area: select;
+        @include mixins.mq(lg) {
+          font-size: 1.2rem;
+        }
+
         &::-ms-expand {
           display: none;
         }
@@ -142,7 +183,7 @@
           left: -1px;
           right: -1px;
           bottom: -1px;
-          border: 2px solid blue;
+          border: 4px solid variables.$color-dark-cyan;
           border-radius: inherit;
         }
       }
@@ -153,15 +194,10 @@
     }
 
     &-btn {
-      color: #fff;
-      background-color: variables.$color-dark-cyan;
-      margin-right: 1rem;
-      font-size: 1rem;
-      font-weight: variables.$font-bold;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      &:hover {
-        background-color: variables.$color-very-dark-cyan;
+      @include mixins.mq(lg) {
+        font-size: 1.2rem;
+        font-weight: variables.$font-regular;
+        margin-bottom: 2rem;
       }
     }
   }

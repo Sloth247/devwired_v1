@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listJobDetails, updateJob } from '../actions/jobActions';
 import { JOB_UPDATE_RESET } from '../constants/jobConstants';
 import Loader from '../components/Loader';
+import './JobEditScreen.scss';
 
 const JobEditScreen = () => {
   const [company, setCompany] = useState('');
@@ -139,11 +140,15 @@ const JobEditScreen = () => {
   };
 
   return (
-    <>
-      <Link to="/admin/joblist">Go Back</Link>
+    <div className="job-edit">
+      <div className="back-btn__container">
+        <Link to="/admin/joblist" className="back-btn btn">
+          Go Back
+        </Link>
+      </div>
 
       <div>
-        <h1>Edit Job Listing</h1>
+        <h1 className="list-title">Edit Job Listing</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <p>{errorUpdate}</p>}
         {loading ? (
@@ -154,9 +159,9 @@ const JobEditScreen = () => {
           <form
             action=""
             onSubmit={submitHandler}
-            className="login__form-container"
+            className="job-edit__form-container"
           >
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="company">Company</label>
               <input
                 id="company"
@@ -166,7 +171,7 @@ const JobEditScreen = () => {
                 onChange={(e) => setCompany(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="logo">Logo</label>
               <input
                 id="logo"
@@ -181,8 +186,9 @@ const JobEditScreen = () => {
                 custom="true"
                 onChange={uploadFileHandler}
               />
+              {uploading && <p>Uploading...</p>}
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="isNew">New?</label>
               <input
                 id="isNew"
@@ -193,7 +199,7 @@ const JobEditScreen = () => {
               />
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="featured">Featured?</label>
               <input
                 id="featured"
@@ -204,7 +210,7 @@ const JobEditScreen = () => {
               />
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="position">position</label>
               <input
                 id="position"
@@ -214,7 +220,7 @@ const JobEditScreen = () => {
                 onChange={(e) => setPosition(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="role-select">Choose a role</label>
               <select
                 name="role"
@@ -228,7 +234,7 @@ const JobEditScreen = () => {
               </select>
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="level-select">Choose a level</label>
               <select
                 name="level"
@@ -241,7 +247,7 @@ const JobEditScreen = () => {
                 <option value="Senior">Senior</option>
               </select>
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="contract-select">Choose a contract</label>
               <select
                 name="contract"
@@ -255,7 +261,7 @@ const JobEditScreen = () => {
               </select>
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="location">location</label>
               <input
                 id="location"
@@ -266,7 +272,7 @@ const JobEditScreen = () => {
               />
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="languages">languages</label>
               <textarea
                 id="languages"
@@ -277,7 +283,7 @@ const JobEditScreen = () => {
               ></textarea>
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="tools">tools</label>
               <textarea
                 id="tools"
@@ -288,7 +294,7 @@ const JobEditScreen = () => {
               ></textarea>
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="overview">overview</label>
               <textarea
                 id="overview"
@@ -299,7 +305,7 @@ const JobEditScreen = () => {
               ></textarea>
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="qualifications">qualifications</label>
               <textarea
                 id="qualifications"
@@ -310,26 +316,24 @@ const JobEditScreen = () => {
               ></textarea>
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="salary-start">Salary start</label>
               <input
                 id="salary-start"
                 type="number"
                 value={salaryStart}
-                checked={salaryStart}
-                onChange={(e) => setSalaryStart(e.target.checked)}
+                onChange={(e) => setSalaryStart(e.target.value)}
               />
               <label htmlFor="salary-end">Salary End</label>
               <input
                 id="salary-end"
                 type="number"
                 value={salaryEnd}
-                checked={salaryEnd}
-                onChange={(e) => setSalaryEnd(e.target.checked)}
+                onChange={(e) => setSalaryEnd(e.target.value)}
               />
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="hours">Hours</label>
               <input
                 id="hours"
@@ -340,7 +344,7 @@ const JobEditScreen = () => {
               />
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="responsibilities">Responsibilities</label>
               <textarea
                 id="responsibilities"
@@ -351,7 +355,7 @@ const JobEditScreen = () => {
               ></textarea>
             </div>
 
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="remarks">Remarks</label>
               <textarea
                 id="remarks"
@@ -362,13 +366,13 @@ const JobEditScreen = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className="btn btn-signin">
+            <button type="submit" className="btn">
               Update
             </button>
           </form>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

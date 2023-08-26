@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import './LoginScreen.scss';
+import './JobEditScreen.scss';
 
 import { getUserDetails, updateUser } from '../actions/userActions';
 import { USER_UPDATE_RESET } from '../constants/userConstants';
 
-import './LoginScreen.scss';
+import './JobEditScreen.scss';
 import Loader from '../components/Loader';
 
 export default function UserEditScreen() {
@@ -25,7 +25,6 @@ export default function UserEditScreen() {
   const [github, setGithub] = useState('');
   const [linkedin, setLinkedin] = useState('');
 
-  const [message, setMessage] = useState('');
   const [uploading, setUploading] = useState(false);
 
   const userDetails = useSelector((state) => state.userDetails);
@@ -56,7 +55,7 @@ export default function UserEditScreen() {
         setLinkedin(user.linkedin);
       }
     }
-  }, [dispatch, id, user, successUpdate]);
+  }, [dispatch, id, user, successUpdate, navigate]);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
@@ -101,11 +100,15 @@ export default function UserEditScreen() {
   };
 
   return (
-    <>
-      <Link to="/admin/userlist">Go Back</Link>
+    <div className="job-edit">
+      <div className="back-btn__container">
+        <Link to="/admin/userlist" className="back-btn">
+          Go Back
+        </Link>
+      </div>
 
-      <div className="login-container">
-        <h1 className="login__title">Edit User</h1>
+      <div>
+        <h1 className="list-title">Edit User</h1>
         {loadingUpdate ? <Loader /> : errorUpdate ? <p>{error}</p> : ''}
         {loading ? (
           <Loader />
@@ -115,9 +118,9 @@ export default function UserEditScreen() {
           <form
             action=""
             onSubmit={submitHandler}
-            className="login__form-container"
+            className="job-edit__form-container"
           >
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="name">Name</label>
               <input
                 id="name"
@@ -127,7 +130,7 @@ export default function UserEditScreen() {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="email">Email Address</label>
               <input
                 id="email"
@@ -137,7 +140,7 @@ export default function UserEditScreen() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="isAdmin">Admin?</label>
               <input
                 id="isAdmin"
@@ -147,7 +150,7 @@ export default function UserEditScreen() {
                 onChange={(e) => setIsAdmin(e.target.checked)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="image">Profile Image</label>
               <input
                 id="image"
@@ -155,9 +158,9 @@ export default function UserEditScreen() {
                 placeholder="Choose File"
                 onChange={uploadFileHandler}
               />
-              {uploading && <p>Loading...</p>}
+              {uploading && <p>Uploading...</p>}
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="location">Location</label>
               <input
                 id="location"
@@ -167,7 +170,7 @@ export default function UserEditScreen() {
                 onChange={(e) => setLocation(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="summary">Summary</label>
               <input
                 id="summary"
@@ -177,7 +180,7 @@ export default function UserEditScreen() {
                 onChange={(e) => setSummary(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="website">Website</label>
               <input
                 id="website"
@@ -187,7 +190,7 @@ export default function UserEditScreen() {
                 onChange={(e) => setWebsite(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="github">Github URL</label>
               <input
                 id="github"
@@ -197,7 +200,7 @@ export default function UserEditScreen() {
                 onChange={(e) => setGithub(e.target.value)}
               />
             </div>
-            <div className="login__form-items">
+            <div className="job-edit__form-items">
               <label htmlFor="linkedin">Summary</label>
               <input
                 id="linkedin"
@@ -214,6 +217,6 @@ export default function UserEditScreen() {
           </form>
         )}
       </div>
-    </>
+    </div>
   );
 }

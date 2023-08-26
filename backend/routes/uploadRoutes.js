@@ -10,8 +10,10 @@ const router = express.Router();
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: function (req, file) {
+    console.log(file.mimetype);
     let folder;
     let allowed_formats;
+    let resource_type;
     if (file.mimetype.startsWith('image')) {
       folder = 'images';
       allowed_formats = ['jpeg', 'png', 'jpg', 'svg'];
@@ -20,12 +22,13 @@ const storage = new CloudinaryStorage({
       file.mimetype.startsWith('text')
     ) {
       folder = 'documents';
-      allowed_formats = ['doc', 'docx', 'pdf', 'txt'];
+      // allowed_formats = ['doc', 'docx', 'pdf', 'txt'];
+      resource_type = 'raw';
     }
     return {
       folder,
       allowed_formats: allowed_formats,
-      resource_type: 'raw',
+      resource_type: resource_type,
       transformation: [{ width: 400, height: 400, crop: 'limit' }],
     };
   },

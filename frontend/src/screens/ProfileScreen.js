@@ -15,6 +15,7 @@ export default function ProfileScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [image, setImage] = useState('');
   const [location, setLocation] = useState('');
   const [summary, setSummary] = useState('');
@@ -47,6 +48,7 @@ export default function ProfileScreen() {
       } else {
         setName(user.name);
         setEmail(user.email);
+        setPhoneNumber(user.phoneNumber);
         setImage(user.image);
         setLocation(user.location);
         setSummary(user.summary);
@@ -70,6 +72,7 @@ export default function ProfileScreen() {
           name,
           email,
           password,
+          phoneNumber,
           image,
           location,
           summary,
@@ -177,6 +180,16 @@ export default function ProfileScreen() {
                 <BiHide aria-labelledby="hide password" />
               )}
             </button>
+          </div>
+          <div className="profile__form-items">
+            <label htmlFor="phone">Phone Number</label>
+            <input
+              id="phone"
+              type="text"
+              placeholder="Enter your phone number"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
           </div>
           <div className="profile__form-items">
             <label htmlFor="image">Profile Image</label>

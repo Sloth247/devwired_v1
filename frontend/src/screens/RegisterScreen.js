@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { BiShow, BiHide } from 'react-icons/bi';
 import { register } from '../actions/userActions';
-
-import './LoginScreen.scss';
+import Message from '../components/Message';
+import './RegisterScreen.scss';
 import Loader from '../components/Loader';
 
 export default function RegisterScreen() {
@@ -14,6 +14,7 @@ export default function RegisterScreen() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const [isShown, setIsShown] = useState(false);
+  const [isConfirmedShown, setIsConfirmedShown] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,17 +46,17 @@ export default function RegisterScreen() {
   };
 
   return (
-    <div className="login-container">
-      <h1 className="login__title">Sign Up</h1>
+    <div className="register-container">
+      <h1 className="list-title">Sign Up</h1>
       {loading && <Loader />}
-      {message && <p>{message}</p>}
+      {message && <Message variant="danger">{message}</Message>}
       {error && <p>{error}</p>}
       <form
         action=""
         onSubmit={submitHandler}
-        className="login__form-container"
+        className="register__form-container"
       >
-        <div className="login__form-items">
+        <div className="register__form-items">
           <label htmlFor="name">Name</label>
           <input
             id="name"
@@ -65,7 +66,7 @@ export default function RegisterScreen() {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="login__form-items">
+        <div className="register__form-items">
           <label htmlFor="email">Email Address</label>
           <input
             id="email"
@@ -75,7 +76,7 @@ export default function RegisterScreen() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className="login__form-items">
+        <div className="register__form-items">
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -95,20 +96,20 @@ export default function RegisterScreen() {
             )}
           </button>
         </div>
-        <div className="login__form-items">
+        <div className="register__form-items">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             id="confirmPassword"
-            type={isShown ? 'text' : 'password'}
+            type={isConfirmedShown ? 'text' : 'password'}
             placeholder="Confirm password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <button
             className="btn-showhide"
-            onClick={() => setIsShown((prevState) => !prevState)}
+            onClick={() => setIsConfirmedShown((prevState) => !prevState)}
           >
-            {isShown ? (
+            {isConfirmedShown ? (
               <BiHide aria-labelledby="hide password" />
             ) : (
               <BiShow aria-labelledby="show password" />

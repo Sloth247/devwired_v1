@@ -4,6 +4,10 @@
 .myjobs {
   font-size: 1rem;
   color: variables.$color-very-dark-cyan;
+  &__container {
+    max-width: 69.375rem;
+    margin: auto;
+  }
 
   &__item {
     background-color: #fff;
@@ -16,6 +20,9 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+    }
+    @include mixins.mq(lg) {
+      padding: 2rem;
     }
   }
   &__inner-container {
@@ -31,6 +38,11 @@
     margin-right: 1rem;
     & img {
       width: 100%;
+    }
+    @include mixins.mq(lg) {
+      width: 5.5rem;
+      height: 5.5rem;
+      margin-right: 2rem;
     }
   }
 
@@ -49,11 +61,7 @@
     font-size: 0.9375rem;
   }
   &__details {
-    background-color: variables.$color-dark-cyan;
-    color: variables.$color-bg;
     display: inline-block;
-    border-radius: 4px;
-    padding: 0.25rem 1rem;
   }
 }
 .alert-danger,

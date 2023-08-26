@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Paginate from '../components/Paginate';
+import { RiDeleteBinFill, RiEdit2Fill } from 'react-icons/ri';
 
 import { listJobs, deleteJob, createJob } from '../actions/jobActions';
 import { JOB_CREATE_RESET } from '../constants/jobConstants';
@@ -49,13 +50,6 @@ export default function JobListScreen() {
     } else {
       dispatch(listJobs(pageNumber));
       console.log(pageNumber);
-      // if (pageNumber) {
-      //   const queryParams = { pageNumber: parseInt(pageNumber) };
-      //   dispatch(listJobs(queryParams));
-      //   console.log(queryParams);
-      // } else {
-      //   dispatch(listJobs());
-      // }
     }
   }, [
     dispatch,
@@ -87,7 +81,7 @@ export default function JobListScreen() {
       <div>
         <h1 className="list-title">List of job listings</h1>
 
-        <button onClick={createJobHandler} className="btn-create">
+        <button onClick={createJobHandler} className="btn-create btn">
           Create a new listing
         </button>
       </div>
@@ -104,24 +98,24 @@ export default function JobListScreen() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>company</th>
-              <th>logo</th>
+              <th>Company</th>
+              <th>Logo</th>
               <th>New</th>
-              <th>featured</th>
-              <th>position</th>
-              <th>role</th>
-              <th>level</th>
-              <th>contract</th>
-              <th>location</th>
-              <th>language</th>
-              <th>tools</th>
-              <th>overview</th>
-              <th>qualifications</th>
-              <th>salary start</th>
-              <th>salary end</th>
-              <th>hours</th>
-              <th>responsibilities</th>
-              <th>remarks</th>
+              <th>Featured</th>
+              <th>Position</th>
+              <th>Role</th>
+              <th>Level</th>
+              <th>Contract</th>
+              <th>Location</th>
+              <th>Languages</th>
+              <th>Tools</th>
+              <th>Overview</th>
+              <th>Qualifications</th>
+              <th>Salary start</th>
+              <th>Salary end</th>
+              <th>Hours</th>
+              <th>Responsibilities</th>
+              <th>Remarks</th>
 
               <th></th>
             </tr>
@@ -154,10 +148,15 @@ export default function JobListScreen() {
 
                   <td>
                     <Link to={`/admin/job/${job._id}/edit`}>
-                      <button>Edit</button>
+                      <button className="btn-edit">
+                        <RiEdit2Fill className="edit-icon" />
+                      </button>
                     </Link>
-                    <button onClick={() => deleteHandler(job._id)}>
-                      delete
+                    <button
+                      onClick={() => deleteHandler(job._id)}
+                      className="btn-delete"
+                    >
+                      <RiDeleteBinFill className="delete-icon" />
                     </button>
                   </td>
                 </tr>

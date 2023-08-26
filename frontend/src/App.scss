@@ -101,6 +101,20 @@ ul {
   margin-top: 1rem;
   margin-bottom: 2rem;
   @include mixins.mq(md) {
+    margin-top: 2rem;
     font-size: 1.5rem;
+  }
+}
+
+.btn {
+  color: variables.$color-bg;
+  background-color: variables.$color-dark-cyan;
+  font-size: inherit;
+  padding: 0.45rem 2rem 0.25rem 2rem;
+  border-radius: 8px;
+  &:hover {
+    background-color: variables.$color-bg;
+    border: solid 1px variables.$color-dark-cyan;
+    color: variables.$color-dark-cyan;
   }
 }

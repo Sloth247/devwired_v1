@@ -68,6 +68,7 @@ const getUserProfile = asyncHandler(async (req, res, next) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      phoneNumber: user.phoneNumber,
       image: user.image,
       location: user.location,
       summary: user.summary,
@@ -90,6 +91,7 @@ const updateUserProfile = asyncHandler(async (req, res, next) => {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.image = req.body.image || user.image;
+    user.phoneNumber = req.body.phoneNumber || user.phoneNumber;
     user.location = req.body.location || user.location;
     user.summary = req.body.summary || user.summary;
     user.website = req.body.website || user.website;
@@ -104,6 +106,7 @@ const updateUserProfile = asyncHandler(async (req, res, next) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      phoneNumber: updatedUser.phoneNumber,
       image: updatedUser.image,
       location: updatedUser.location,
       summary: updatedUser.summary,
@@ -160,6 +163,7 @@ const updateUser = asyncHandler(async (req, res, next) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
+    user.phoneNumber = req.body.phoneNumber || user.phoneNumber;
     user.image = req.body.image || user.image;
     user.location = req.body.location || user.location;
     user.summary = req.body.summary || user.summary;
@@ -174,6 +178,7 @@ const updateUser = asyncHandler(async (req, res, next) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      phoneNumber: updatedUser.phoneNumber,
       image: updatedUser.image,
       location: updatedUser.location,
       summary: updatedUser.summary,

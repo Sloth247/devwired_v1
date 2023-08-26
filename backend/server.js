@@ -13,7 +13,7 @@ import cors from 'cors';
 import jobRoutes from './routes/jobRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import applicationRoutes from './routes/applicationRoutes.js';
-import uploadRoutes from './routes/uploadRoutes.js';
+import { default as uploadRoutes } from './routes/uploadRoutes.js';
 
 // Load env vars
 dotenv.config();
