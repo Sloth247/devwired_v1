@@ -41,9 +41,9 @@ Admin User should be able to:
 
 ### Screenshot
 
-![](./images/desktop-view.png)
-![](./images/mobile-view.png)
-![](./images/login.png)
+![](./readme/desktop-view.png)
+![](./readme/mobile-view.png)
+![](./readme/login.png)
 
 ### Links
 
