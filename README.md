@@ -41,9 +41,9 @@ Admin User should be able to:
 
 ### Screenshot
 
-![](./desktop-view.png)
-![](./mobile-view.png)
-![](./login.png)
+![](./images/desktop-view.png)
+![](./images/mobile-view.png)
+![](./images/login.png)
 
 ### Links
 
@@ -84,6 +84,7 @@ Admin User should be able to:
 This was my first time using Cloudinary to store data. I encountered an issue with properly updating `.docx` files on the `Apply screen`. After reading the documentation, I discovered that adding `resource_type = 'raw'` to the `CloudinaryStorage` resolved the problem. Additionally, Cloudinary was blocking PDF files by default, so I adjusted the settings on the Cloudinary portal.
 
 **Frontend**
+
 Designing routes for multiple screens was certainly challenging. I ensured that users are redirected to the login page if they are not logged in. Drawing inspiration from the Indeed website, I disabled the apply button on the Job Details screen when the user has already applied for the job.
 
 I used React Bootstrap for warning/success messages and loading spinners, which allowed for consistent styling and reuse across various pages.
@@ -91,6 +92,7 @@ I used React Bootstrap for warning/success messages and loading spinners, which 
 React bootstrap is used for the warning/sucess messages and loading spinner to easily style and reuse on the multiple pages.
 
 **Other**
+
 Initially, I used `concurrently` to run both the frontend and backend on `localhost:3000`. However, I encountered issues. To resolve this, I installed the `http-proxy-middleware` package and created a `setupProxy.js` file in the frontend folder. This solution proved effective.
 
 ### Continued development
