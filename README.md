@@ -41,9 +41,9 @@ Admin User should be able to:
 
 ### Screenshot
 
-![](./desktop-view.jpg)
-![](./mobile-view.jpg)
-![](./login-view.jpg)
+![](./desktop-view.png)
+![](./mobile-view.png)
+![](./login.png)
 
 ### Links
 
