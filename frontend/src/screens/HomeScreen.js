@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams, Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import Filterbar from '../components/Filterbar';
 import Paginate from '../components/Paginate';
 import { listJobs } from '../actions/jobActions';
@@ -31,6 +33,7 @@ const HomeScreen = () => {
     } else {
       dispatch(listJobs());
     }
+    // eslint-disable-next-line
   }, [dispatch, searchParams]);
 
   const addQuery = (key, value) => {
@@ -77,7 +80,7 @@ const HomeScreen = () => {
               >
                 <div className="post__grid">
                   <div className="post__img-container">
-                    <img
+                    <LazyLoadImage
                       src={
                         job.logo.includes('cloudinary')
                           ? job.logo.slice(1)

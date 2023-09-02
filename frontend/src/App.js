@@ -1,8 +1,8 @@
+import React, { lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.scss';
 
-import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
@@ -17,6 +17,8 @@ import ApplicationDetailsScreen from './screens/ApplicationDetailsScreen';
 import ApplicationListScreen from './screens/ApplicationListScreen';
 import MyJobsScreen from './screens/MyJobsScreen';
 import Header from './components/Header';
+
+const HomeScreen = lazy(() => import('./screens/HomeScreen'));
 
 function App() {
   return (
