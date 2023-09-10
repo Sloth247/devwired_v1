@@ -87,6 +87,8 @@ const HomeScreen = () => {
                           : job.logo
                       }
                       alt={job.company}
+                      width={48}
+                      height={48}
                     />
                   </div>
 
