@@ -13,14 +13,18 @@ html {
   box-sizing: inherit;
 }
 *:focus-visible {
-  outline: dotted 3px #606c38;
+  outline: dotted 3px variables.$color-dark-cyan;
   outline-offset: 10px;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
 }
 
 body {
   width: 100%;
   max-width: 100%;
-  // min-height: 62.5em;
   min-height: 100vh;
   background-color: variables.$color-bg;
 }
@@ -59,6 +63,15 @@ button {
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 .sr-only {
@@ -119,7 +132,25 @@ ul {
   }
 }
 
-// img {
-//   width: 100%;
-//   height: auto;
-// }
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* isolate stacking context in React/Next */
+#root,
+#__next {
+  isolation: isolate;
+  min-height: inherit;
+}
