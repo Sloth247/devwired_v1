@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { BiShow, BiHide } from 'react-icons/bi';
 import { register } from '../actions/userActions';
 import Message from '../components/Message';
